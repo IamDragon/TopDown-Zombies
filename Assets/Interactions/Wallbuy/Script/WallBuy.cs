@@ -11,14 +11,14 @@ public class WallBuy : WeaponBuy
     {
         if (Player.Instance.PlayerVariables.isDowned)
             return;
-        //check if we have enough points, dont have the perk and dont have ot many perks
-        //if we do remove points and ge
+        //check if we have enough points, don't have the perk and don't have to many perks
+        //if we do remove points and get
         if (CanBuy() && !Player.Instance.WeaponHandler.HasGun(gun))
         {
             DoThing();
             Player.Instance.PointManager.RemovePoints(cost);
         }
-        else if (CanBuyAmmo() && Player.Instance.WeaponHandler.HasGun(gun)) // doesnt already have full ammo
+        else if (CanBuyAmmo() && Player.Instance.WeaponHandler.HasGun(gun)) // doesn't already have full ammo
         {
             //Give ammo to player
             BuyAmmo();

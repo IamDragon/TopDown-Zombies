@@ -66,7 +66,7 @@ public class BoardedEntrance : MonoBehaviour
 
     public void RepairEntrance()
     {
-        if (repairing) return;
+        if (repairing || !interaction.PlayerInRange) return;
         //start animation
         StartCoroutine(AddBoard());
     }

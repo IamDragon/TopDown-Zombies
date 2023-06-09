@@ -146,7 +146,7 @@ public class InputHandler : MonoBehaviour
     private void ScoreBoardInput()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
-            HUDScoreboard.Instance.ShowHideScoreboard(stats);
+            HUDScoreboard.Instance.ToggleScoreboard(stats);
     }
 
     private void FlipSprite()

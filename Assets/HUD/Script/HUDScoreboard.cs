@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class HUDScoreboard : MonoBehaviour
 {
-    [SerializeField] private PlayerStatsEventSO updateHudEvent;
-    //[SerializeField] private EventSO hideScoreBoardEvent;
+    [Header("Event")]
+    [SerializeField] private PlayerStatsEventSO onToggleScoreboardEvent;
+    [SerializeField] private EventSO onPauseEvent;
 
 
     [SerializeField] private ScoreboardHolder holder;
@@ -24,16 +25,27 @@ public class HUDScoreboard : MonoBehaviour
 
     private void OnEnable()
     {
-        updateHudEvent.Action += UpdateScore;
-        //UpdateScoreboard += ShowScoreBoard;
-        //hideScoreBoardEvent.Action += HideScoreboard;
+        onToggleScoreboardEvent.Action += UpdateScore;
+        onPauseEvent.Action += OnPuase;
     }
 
     private void OnDisable()
     {
-        updateHudEvent.Action -= UpdateScore;
-        //UpdateScoreboard -= ShowScoreBoard;
-        //hideScoreBoardEvent.Action -= HideScoreboard;
+        onToggleScoreboardEvent.Action -= UpdateScore;
+        onPauseEvent.Action -= OnPuase;
+    }
+
+
+    private void OnPuase()
+    {
+        if (PauseManager.GamePaused)
+            HideScoreboard();
+        else
+        {
+            if (active)
+                this.gameObject.SetActive(true);
+        }
+
     }
 
     private void UpdateScore(PlayerStats stats)
@@ -45,18 +57,18 @@ public class HUDScoreboard : MonoBehaviour
     {
         UpdateScore(stats);
         this.gameObject.SetActive(true);
-        active= true;
+        active = true;
     }
 
     private void HideScoreboard()
     {
         this.gameObject.SetActive(false);
-        active= false;
+        active = false;
     }
 
-    public void ShowHideScoreboard(PlayerStats stats)
+    public void ToggleScoreboard(PlayerStats stats)
     {
-        if(active)
+        if (active)
             HideScoreboard();
         else
             ShowScoreBoard(stats);

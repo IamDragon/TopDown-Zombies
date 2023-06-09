@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 700
   onInteractionTriggerdEvent: {fileID: 11400000, guid: 64c7dbcbc473bcc4bbf0265e8d5612c7, type: 2}
-  OnCantAffordEvent: {fileID: 11400000, guid: 1451060a8f6798c48bc83398b766938a, type: 2}
+  onCantAffordEvent: {fileID: 11400000, guid: 1451060a8f6798c48bc83398b766938a, type: 2}
   weaponHandler: {fileID: 0}
   ammoCost: 0
   gun: {fileID: 4643132976717906973, guid: 3dee1752912d1594383cb2b1c0faca3b, type: 3}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 6489140738096661954}
   - component: {fileID: 6489140738096661957}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
