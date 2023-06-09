@@ -96,11 +96,11 @@ public class PointManager : MonoBehaviour
         if (doublePointsActive)
         {
             amountToAdd = amount * 2;
-            Debug.Log("Added points " + amount * 2);
+            //Debug.Log("Added points " + amount * 2);
         }
         else
         {
-            Debug.Log("Added points " + amount);
+            //Debug.Log("Added points " + amount);
             amountToAdd = amount;
 
         }

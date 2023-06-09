@@ -21,6 +21,7 @@ public class EnemyMangager : MonoBehaviour
 
     private List<Transform> targets;
     private Transform currentTarget;
+    bool playerAlive;
 
     [Header("Events")]
     //player related
@@ -137,13 +138,15 @@ public class EnemyMangager : MonoBehaviour
 
     private void RemovePlayer()
     {
-        player = null;
+        //player = null;
+        playerAlive = false;
         FindNextTarget();
     }
 
     private void AddPlayer(Transform player)
     {
-        this.player = player;
+        //this.player = player;
+        playerAlive = true;
         FindNextTarget();
     }
 
@@ -167,9 +170,14 @@ public class EnemyMangager : MonoBehaviour
 
     private void FindNextTarget()
     {
-        if (targets.Count == 0)
+        if (targets.Count == 0 && playerAlive)
         {
             currentTarget = player;
+            SetTargetToCurrentTarget();
+        }
+        else if(targets.Count == 0 && !playerAlive)
+        {
+            currentTarget = null;
             SetTargetToCurrentTarget();
         }
         else

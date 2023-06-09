@@ -1,15 +1,21 @@
+// Ignore Spelling: Insta Headshot
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHitHandler : HitHandler
 {
-    bool instaKillActive;
+    public bool instaKillActive;
     private HitType lastHit;
 
     [Header("Events")]
     [SerializeField] protected EventSO onInstaKillStartEvent;
     [SerializeField] protected EventSO onInstaKillEndEvent;
+    [SerializeField] protected EventSO onNormalDeathEvent;
+    [SerializeField] protected EventSO onSpecialDeathEvent;
+    [SerializeField] protected EventSO onHeadshotDeathEvent;
+    [SerializeField] protected EventSO onHitEvent;
 
     private enum HitType
     {
@@ -38,13 +44,11 @@ public class EnemyHitHandler : HitHandler
     public override void GetHit(float damageAmount, Vector2 impactPoint)
     {
         lastHit = HitType.Normal;
-        //AnimatedVFXManager.Instance.PlayVFX(AnimatedVFXManager.VFXType.blood, impactPoint, transform.rotation);
         TakeDamage(damageAmount, impactPoint);
     }
     public void GetHitHeadshot(float damageAmount, float headshotMultiplier, Vector2 impactPoint)
     {
         lastHit = HitType.Headshot;
-        //AnimatedVFXManager.Instance.PlayVFX(AnimatedVFXManager.VFXType.blood, impactPoint, transform.rotation);
         TakeDamage(damageAmount * headshotMultiplier,impactPoint);
     }
 
@@ -62,7 +66,7 @@ public class EnemyHitHandler : HitHandler
         else
         {
             if (!healthSystem.TakeDamage(damageAmount))
-                EnemyActions.OnHit?.Invoke();
+                onHitEvent.Invoke();
         }
     }
 
@@ -71,19 +75,20 @@ public class EnemyHitHandler : HitHandler
         switch (lastHit)
         {
             case HitType.Normal:
-                EnemyActions.OnNormalDeath?.Invoke();
+                onNormalDeathEvent.Invoke();
                 break;
             case HitType.Headshot:
-                EnemyActions.OnHeadshotDeath?.Invoke();
+                onHeadshotDeathEvent?.Invoke();
                 break;
             case HitType.Knife:
-                EnemyActions.OnKnifeDeath?.Invoke();
+                onSpecialDeathEvent.Invoke();
                 break;
         }
     }
 
     private void ActivateInstaKill()
     {
+        Debug.Log("a");
         instaKillActive = true;
     }
 
