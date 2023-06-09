@@ -45,18 +45,6 @@ public class PointManager : MonoBehaviour
         onNuke.Action += AddPoints;
         onCarpenter.Action += AddPoints;
 
-
-        //EnemyActions.OnHeadshotDeath += AddSpecialKillPoints;
-        //EnemyActions.OnKnifeDeath += AddSpecialKillPoints;
-        //EnemyActions.OnNormalDeath += AddKillPoints;
-        //EnemyActions.OnHit += BodyShots;
-
-        //PowerUpActions.OnDoublePointsStart += ActivateDoublePoints;
-        //PowerUpActions.OnDoublePointsEnd += DeactivateDoublePoints;
-
-
-        //PowerUpActions.OnNukePoints += AddPoints;
-        //PowerUpActions.OnCarpenterPoints += AddPoints;
     }
 
     private void OnDisable()
@@ -73,21 +61,12 @@ public class PointManager : MonoBehaviour
         onNuke.Action -= AddPoints;
         onCarpenter.Action -= AddPoints;
 
-        //EnemyActions.OnHeadshotDeath -= AddSpecialKillPoints;
-        //EnemyActions.OnKnifeDeath -= AddSpecialKillPoints;
-        //EnemyActions.OnNormalDeath += AddKillPoints;
-        //EnemyActions.OnHit -= BodyShots;
-
-        //PowerUpActions.OnDoublePointsStart += ActivateDoublePoints;
-        //PowerUpActions.OnDoublePointsEnd += DeactivateDoublePoints;
-
-        //PowerUpActions.OnNukePoints -= AddPoints;
-        //PowerUpActions.OnCarpenterPoints -= AddPoints;
     }
 
     private void Start()
     {
         totalPoints = points;
+        onAddPoints.Invoke(totalPoints);
     }
 
     public void AddPoints(int amount)
