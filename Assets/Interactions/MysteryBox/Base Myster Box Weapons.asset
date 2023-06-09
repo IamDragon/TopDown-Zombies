@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4127e3197f8a8e44b45161743170e78, type: 3}
+  m_Name: Base Myster Box Weapons
+  m_EditorClassIdentifier: 
+  guns:
+  - {fileID: 8284148792253024341, guid: 3dee1752912d1594383cb2b1c0faca3b, type: 3}
+  - {fileID: -6464602078618235392, guid: 4063191dd7d564849aecdbe6fa7f01e9, type: 3}
+  - {fileID: -5377651433735548569, guid: a87cbe883c5b98f489d8f73e83006bc9, type: 3}
+  - {fileID: 6593749592444464825, guid: 0a7c8a79b579b43418c0da74300e9201, type: 3}
+  - {fileID: 5210026216670597012, guid: 6987954763bd63e4b8b25ee6160b6d93, type: 3}
+  - {fileID: 7883643300943764723, guid: 9a9f224054700214eaeb56891d34a23f, type: 3}
+  - {fileID: 7537391365718441016, guid: c6ec9caea3db6f447ad0194006a56958, type: 3}
+  percentages: []

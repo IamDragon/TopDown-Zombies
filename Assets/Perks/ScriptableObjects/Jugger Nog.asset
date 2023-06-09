@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639f2a9e48d171a43af6d3829bbba119, type: 3}
+  m_Name: Jugger Nog
+  m_EditorClassIdentifier: 
+  perkName: Jugger Nog
+  icon: {fileID: 21300000, guid: d35c1161ea1cbd149b4051c6792fc5be, type: 3}
+  onActivatePerk: {fileID: 11400000, guid: bf240f59ed837d249ae2cd7c85a5cf2b, type: 2}
+  healthGain: 100

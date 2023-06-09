@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a04ee9d2f0688a45911d5636f69dd59, type: 3}
+  m_Name: BaseUppgradeMapper
+  m_EditorClassIdentifier: 
+  baseGuns:
+  - {fileID: 4643132976717906973, guid: 3dee1752912d1594383cb2b1c0faca3b, type: 3}
+  - {fileID: 7573147922717614833, guid: 0a7c8a79b579b43418c0da74300e9201, type: 3}
+  - {fileID: 8291393611303975601, guid: 3c9a5d6ecffee2341abdf5742611e84d, type: 3}
+  - {fileID: 8851040590168245212, guid: 6987954763bd63e4b8b25ee6160b6d93, type: 3}
+  - {fileID: 6913269970536321211, guid: 9a9f224054700214eaeb56891d34a23f, type: 3}
+  - {fileID: 3911353241218652425, guid: c6ec9caea3db6f447ad0194006a56958, type: 3}
+  - {fileID: 3395176523995630150, guid: 4063191dd7d564849aecdbe6fa7f01e9, type: 3}
+  - {fileID: 6262959780084137697, guid: 006cc01074781754293d1cc6b42f1a86, type: 3}
+  upgradedGuns:
+  - {fileID: 4643132976717906973, guid: f6e6c1431d779e744b918258ad440897, type: 3}
+  - {fileID: 7573147922717614833, guid: 450381d423bf14e4580685fc52a3782f, type: 3}
+  - {fileID: 8291393611303975601, guid: ce83d1dbe4bb3514d836a7706669f79d, type: 3}
+  - {fileID: 8851040590168245212, guid: 6a0a703056614fe47bed287bab4d4a15, type: 3}
+  - {fileID: 6913269970536321211, guid: a70d072591eb2484ca7cf5eef95966c2, type: 3}
+  - {fileID: 3911353241218652425, guid: f1436a8bf5f2af049b348fcbe19a3f75, type: 3}
+  - {fileID: 3395176523995630150, guid: 2426d62de40b7254c8bcfe5a8ea2aece, type: 3}
+  - {fileID: 6262959780084137697, guid: 355f009701b966646b18adeeb763818b, type: 3}
