@@ -563,8 +563,9 @@ GameObject:
   - component: {fileID: 646082332}
   - component: {fileID: 646082331}
   - component: {fileID: 646082335}
+  - component: {fileID: 646082336}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainMenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,6 +672,18 @@ MonoBehaviour:
   settings: {fileID: 1201442044}
   confirmQuit: {fileID: 1352176456}
   levelSelect: {fileID: 1395277455}
+--- !u!114 &646082336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646082330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1eeb91a23e0e2b4e9e10d2b8fedda3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &737450547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2885,7 +2898,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2039724892}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 646082336}
+        m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
+        m_MethodName: StartKino
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2039724892
 MonoBehaviour:
   m_ObjectHideFlags: 0
