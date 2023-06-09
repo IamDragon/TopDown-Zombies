@@ -59,7 +59,7 @@ public class MysteryBoxManager : MonoBehaviour
         mysterBoxes = new MysteryBox[boxLocations.Length];
         for (int i = 0; i < boxLocations.Length; i++)
         {
-            MysteryBox newBox = Instantiate<MysteryBox>(boxPrefab, boxLocations[i].position, boxLocations[i].rotation, this.transform); ;
+            MysteryBox newBox = Instantiate<MysteryBox>(boxPrefab, boxLocations[i].position, boxLocations[i].rotation, this.transform);
             newBox.Init(this, baseCost);
             newBox.DeactivateBox();
             mysterBoxes[i] = newBox;

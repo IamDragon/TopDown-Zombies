@@ -22,7 +22,8 @@ public class Buy : MonoBehaviour
     protected virtual void Start()
     {
         costText = "[ Cost: " + cost + " ]";
-        interactionText = "Press " + Keybinds.InteractionButton.ToString() + " to";
+        Debug.Log(Keybinds.Instance);
+        interactionText = "Press " + Keybinds.Instance.InteractionButton.ToString() + " to";
         interaction = GetComponent<Interaction>();
         SetInteractionText();
 

@@ -11,7 +11,8 @@ public class Interaction : MonoBehaviour
 
     //HUD text
     public string interactionText;
-    private string baseInteractionText = "Press " + Keybinds.InteractionButton.ToString() + " to";
+    //private string baseInteractionText = "Press " + Keybinds.Instance.InteractionButton.ToString() + " to";
+    private string baseInteractionText = "Press E" + " to";
 
     //Actions & events
     [Header("Events")]
@@ -24,6 +25,11 @@ public class Interaction : MonoBehaviour
     public string PlayerTag { get { return playerTag; } }
     public bool TextVisible { get; set; } = true;
     public bool PlayerInRange { get { return playerInRange; } }
+
+    private void Start()
+    {
+        //baseInteractionText = "Press " + Keybinds.Instance.InteractionButton.ToString() + " to";
+    }
 
     private void TriggerInteraction()
     {
