@@ -49,7 +49,7 @@ public class RoundManager : MonoBehaviour
 
     private void EndRound()
     {
-        Debug.Log("End round");
+        //Debug.Log("End round");
         roundStarting = true;
         Invoke(nameof(StartNextRound), timeBetweenRounds);
         onRoundEnd.Invoke(currentRound + 1); // currentRound wouldnt have been updated yet
@@ -60,7 +60,7 @@ public class RoundManager : MonoBehaviour
         currentRound++;
         enemiesLeftToSpawn = CalculateEnemiesThisRound();
         SpawnEnemies();
-        Debug.Log("roundStartingTrue");
+        //Debug.Log("roundStartingTrue");
         roundStarting = false;
     }
 
@@ -72,7 +72,7 @@ public class RoundManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        Debug.Log("spawning enemies");
+        //Debug.Log("spawning enemies");
         int amountToSpawn;
         int maxSpawn = enemyManager.MaxEnemiesAlive - enemiesAlive;
 
@@ -84,7 +84,7 @@ public class RoundManager : MonoBehaviour
         {
             amountToSpawn = enemiesLeftToSpawn;
         }
-        Debug.Log("amountToSpawn " + amountToSpawn);
+        //Debug.Log("amountToSpawn " + amountToSpawn);
 
         waitingToSpawn = amountToSpawn;
         for (int i = 0; i < amountToSpawn; i++)

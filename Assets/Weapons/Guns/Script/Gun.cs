@@ -180,11 +180,10 @@ public abstract class Gun : MonoBehaviour
             StartCoroutine(FireBullet(damageInfo));
             if (flashes != null)
                 flashes.ShowMuzzleFlash(muzzleFlashTime);
-            Debug.Log("shot");
             if (weaponHandler.ExtraShot)
             {
-                //FireExtraBullet(damageInfo);
-                Debug.Log("Extra bullet fired");
+                FireExtraBullet(damageInfo);
+                //Debug.Log("Extra bullet fired");
             }
             onReloadEvent.Invoke(magAmmo, stockpileAmmo);
         }

@@ -19,7 +19,6 @@ public class MuzzleFlashes : MonoBehaviour
         spriteRenderer.enabled= true;
         SetRandomSprite();
         Invoke(nameof(HideMuzzleFlash), time);
-        Debug.Log("show flash");
     }
 
     private void HideMuzzleFlash()

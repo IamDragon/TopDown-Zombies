@@ -116,11 +116,9 @@ public class WeaponHandler : MonoBehaviour
     {
         if (activeGun != null)
         {
-            Debug.Log(activeGun);
             activeGun.CancelReload();
             activeGun.gameObject.SetActive(false);
             activeGun = null;
-            Debug.Log(activeGun);
             onUpdateAmmoEvent.Invoke(0, 0);
         }
     }
@@ -225,7 +223,7 @@ public class WeaponHandler : MonoBehaviour
     public void ReceiveNewGun(Gun newGun)
     {
         int index = FindIndexForGun(); //method should return index of currentGun if none found
-        Debug.Log("Index to replace gun: " + index);
+        //Debug.Log("Index to replace gun: " + index);
         if (index == -1)
             ReplaceCurrentGun(newGun, index);
         else
@@ -351,9 +349,12 @@ public class WeaponHandler : MonoBehaviour
 
     public bool HasGun(Gun gun)
     {
+        Debug.Log(gun.GunName);
         for(int i= 0; i < guns.Length; i++)
         {
-            if (guns[i] == gun)
+            if (guns[i] == null) continue;
+
+            if (guns[i].GunName == gun.GunName)
                 return true;
         }
         return false;

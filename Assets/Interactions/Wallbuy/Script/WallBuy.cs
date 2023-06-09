@@ -32,6 +32,8 @@ public class WallBuy : WeaponBuy
     protected override void DoThing()
     {
         Player.Instance.WeaponHandler.ReceiveNewGun(gun);
+        SetInteractionText();
+        interaction.ShowText();
         //Set text to buy ammo text
         //Interaction.OnInteractionExit();
     }
@@ -40,6 +42,7 @@ public class WallBuy : WeaponBuy
     {
         Player.Instance.WeaponHandler.FillAmmoForGun(gun);
         SetInteractionText();
+        interaction.ShowText();
     }
 
     private bool CanBuyAmmo()
@@ -53,15 +56,20 @@ public class WallBuy : WeaponBuy
         if (collision.transform.parent.CompareTag(interaction.PlayerTag))
         {
             SetInteractionText();
-            interaction.ShowText();
+            //interaction.ShowText();
         }
     }
 
     protected override void SetInteractionText()
     {
         if (Player.Instance.WeaponHandler.HasGun(gun))
+        {
             interaction.SetInteractionText(" purchase ammo for " + gun.name + " " + costText);
+        }
         else
+        {
             interaction.SetInteractionText(" purchase " + gun.name + " " + costText);
+            Debug.Log("player has gun");
+        }
     }
 }
