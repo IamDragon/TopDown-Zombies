@@ -47,4 +47,10 @@ public class AnimatedEnemy : Enemy
         animator.SetBool("isRunning", false);
         animator.SetBool("isIdling", true);
     }
+
+    protected override void OnGameOver()
+    {
+        base.OnGameOver();
+        StartIdleAnimation();
+    }
 }

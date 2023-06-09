@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee111f06cf4be7468dff0be5dbee408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onGameOver: {fileID: 11400000, guid: 62cd063f25408a4479864b92563e8aaf, type: 2}
   moveSpeed: 2
   target: {fileID: 0}
   damageInfo: {fileID: 11400000, guid: d4a64f04c35bec54c8a563281c663ac5, type: 2}
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincibilityTime: 0
+  instaKillActive: 0
   onInstaKillStartEvent: {fileID: 11400000, guid: 61abfbe2db09b2a4fb5c641b2ab4e208, type: 2}
   onInstaKillEndEvent: {fileID: 11400000, guid: 065f9eac5121f9147a4b7fae150c7c6e, type: 2}
   onNormalDeathEvent: {fileID: 11400000, guid: 8c24ca97933b4d747b8a1e541cf8ccc9, type: 2}

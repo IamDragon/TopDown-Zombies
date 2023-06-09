@@ -15,6 +15,9 @@ public class PlayerHealthSystem : HealthSystem
     [SerializeField] private float delayBeforeHealingStarts;
     [SerializeField] private float delayBetweenHealthGain;
 
+    [Header("Events")]
+    [SerializeField] protected EventSO onPlayerTrueDeath;
+
     public bool QuickReviveActive { get; set; }
 
     protected override void Start()
@@ -36,7 +39,7 @@ public class PlayerHealthSystem : HealthSystem
     private void TrueDeath()
     {
         //end game if single player
-        Debug.Log("True death");
+        onPlayerTrueDeath.Invoke();
     }
 
     private void EnterDownState()

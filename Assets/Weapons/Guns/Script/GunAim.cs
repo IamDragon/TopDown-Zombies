@@ -9,7 +9,7 @@ public class GunAim : MonoBehaviour
 
     private void Update()
     {
-        if(PauseManager.GamePaused) return;
+        if(PauseManager.GamePaused || GameoverController.GameOver) return;
         RotateGun();
     }
     private void RotateGun()

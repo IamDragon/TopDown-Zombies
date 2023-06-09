@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
-
+    [SerializeField] private EventSO onGameOver;
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected Transform target;
     [SerializeField] protected DamageInfo damageInfo;
@@ -30,9 +29,19 @@ public class Enemy : MonoBehaviour
         healthSystem.OnDeath += Inactivate;
     }
 
+    protected virtual void OnEnable()
+    {
+        onGameOver.Action += OnGameOver;
+    }
+
+    protected virtual void OnDisable()
+    {
+        onGameOver.Action -= OnGameOver;
+    }
+
     protected virtual void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             //stand still don't do jack shit
             movement.SetRBVel0();
@@ -81,7 +90,7 @@ public class Enemy : MonoBehaviour
         if (AtNode(path[0]) && path.Count > 1)
             path.RemoveAt(0);
         Node nextNode = path[0];
-        Vector3 dirToNode= DirectionToNode(nextNode);
+        Vector3 dirToNode = DirectionToNode(nextNode);
         movement.SetVelocity(dirToNode, moveSpeed);
     }
 
@@ -125,5 +134,8 @@ public class Enemy : MonoBehaviour
         healthSystem.TakeDamage(healthSystem.MaxHealth);
     }
 
-
+    protected virtual void OnGameOver()
+    {
+        movement.SetRBVel0();
+    }
 }

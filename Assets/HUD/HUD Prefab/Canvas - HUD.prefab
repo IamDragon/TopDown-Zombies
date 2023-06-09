@@ -2843,7 +2843,6 @@ GameObject:
   - component: {fileID: 3738856837419419355}
   - component: {fileID: 3738856837419419353}
   - component: {fileID: 3738856837419419354}
-  - component: {fileID: 3738856837419419352}
   m_Layer: 5
   m_Name: Scoreboard
   m_TagString: Untagged
@@ -2858,20 +2857,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3738856837419419356}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3738856837103722555}
   - {fileID: 3738856837233716542}
-  m_Father: {fileID: 3738856837472166873}
-  m_RootOrder: 5
+  m_Father: {fileID: 2090408252282880901}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24768753, y: 0.5}
   m_AnchorMax: {x: 0.752146, y: 0.75040674}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.00003890629}
+  m_SizeDelta: {x: 968.5603, y: 270.58167}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3738856837419419353
 CanvasRenderer:
@@ -2911,20 +2910,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3738856837419419352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3738856837419419356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a249c810b9b9294a88d116632171029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updateHudEvent: {fileID: 11400000, guid: cdf57711da8ddfb45914aa470b07fa65, type: 2}
-  holder: {fileID: 3738856837233716541}
 --- !u!1 &3738856837472166874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +2946,7 @@ RectTransform:
   - {fileID: 3738856836730956848}
   - {fileID: 3738856835879905814}
   - {fileID: 3738856835568519902}
-  - {fileID: 3738856837419419355}
+  - {fileID: 2090408252282880901}
   - {fileID: 3738856835393428893}
   - {fileID: 3738856835525649862}
   - {fileID: 337510881}
@@ -3611,6 +3596,60 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &5418303435576137300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090408252282880901}
+  - component: {fileID: 6774848486780854049}
+  m_Layer: 5
+  m_Name: ScoreBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2090408252282880901
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418303435576137300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3738856837419419355}
+  m_Father: {fileID: 3738856837472166873}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.15979004, y: 135.2908}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6774848486780854049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418303435576137300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a249c810b9b9294a88d116632171029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onToggleScoreboardEvent: {fileID: 11400000, guid: cdf57711da8ddfb45914aa470b07fa65, type: 2}
+  onPauseEvent: {fileID: 11400000, guid: 3136ab5a97d7d32418dc04c3c61add93, type: 2}
+  onGameOverEvent: {fileID: 11400000, guid: 62cd063f25408a4479864b92563e8aaf, type: 2}
+  holder: {fileID: 3738856837233716541}
 --- !u!1 &8940639186921995945
 GameObject:
   m_ObjectHideFlags: 0

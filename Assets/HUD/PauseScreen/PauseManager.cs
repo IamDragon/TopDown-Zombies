@@ -24,7 +24,7 @@ public class PauseManager : MonoBehaviour
 
     /// <summary>
     /// Called when player wished to pause/ unpause game
-    /// either by cklicking resume or escape
+    /// either by clicking resume or escape
     /// </summary>
     public void TogglePause()
     {

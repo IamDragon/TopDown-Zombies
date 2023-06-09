@@ -7,6 +7,7 @@ public class InputHandler : MonoBehaviour
     [Header("Events")]
     [SerializeField] protected EventSO onUse;
     [SerializeField] protected EventSO onPauseToggled;
+    [SerializeField] protected EventSO onGameOver;
     //[SerializeField] protected EventSO onMelee;
 
     PlayerVariables vars;
@@ -29,10 +30,20 @@ public class InputHandler : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private void OnEnable()
+    {
+        onGameOver.Action += OnGameOver;
+    }
+
+    private void OnDisable()
+    {
+        onGameOver.Action -= OnGameOver;
+    }
 
 
     void Update()
     {
+        if (GameoverController.GameOver) return;
         PauseGame();
         if (PauseManager.GamePaused) return;
         MovementInput();
@@ -166,9 +177,9 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnGameOver()
     {
-        //Gizmos.DrawLine(transform.position, transform.right * 1);
-
+        move.SetRBVel0();
+        gameObject.SetActive(false);
     }
 }

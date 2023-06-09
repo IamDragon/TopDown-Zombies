@@ -11,6 +11,7 @@ public class EntranceEnemy : AnimatedEnemy
 
     protected override void Update()
     {
+        if (GameoverController.GameOver) return;
         if (target == null)
         {
             //stand still don't do jack shit

@@ -8,8 +8,9 @@ public class HUDScoreboard : MonoBehaviour
     [Header("Event")]
     [SerializeField] private PlayerStatsEventSO onToggleScoreboardEvent;
     [SerializeField] private EventSO onPauseEvent;
+    [SerializeField] private EventSO onGameOverEvent;
 
-
+    [SerializeField] private Transform scoreboard;
     [SerializeField] private ScoreboardHolder holder;
     private bool active;
     public static HUDScoreboard Instance;
@@ -27,12 +28,14 @@ public class HUDScoreboard : MonoBehaviour
     {
         onToggleScoreboardEvent.Action += UpdateScore;
         onPauseEvent.Action += OnPuase;
+        onGameOverEvent.Action += ShowScoreBoard;
     }
 
     private void OnDisable()
     {
         onToggleScoreboardEvent.Action -= UpdateScore;
         onPauseEvent.Action -= OnPuase;
+        onGameOverEvent.Action -= ShowScoreBoard;
     }
 
 
@@ -43,7 +46,7 @@ public class HUDScoreboard : MonoBehaviour
         else
         {
             if (active)
-                this.gameObject.SetActive(true);
+                scoreboard.gameObject.SetActive(true);
         }
 
     }
@@ -56,13 +59,20 @@ public class HUDScoreboard : MonoBehaviour
     private void ShowScoreBoard(PlayerStats stats)
     {
         UpdateScore(stats);
-        this.gameObject.SetActive(true);
+        scoreboard.gameObject.SetActive(true);
         active = true;
     }
 
+    private void ShowScoreBoard()
+    {
+        scoreboard.gameObject.SetActive(true);
+        active = true;
+    }
+
+
     private void HideScoreboard()
     {
-        this.gameObject.SetActive(false);
+        scoreboard.gameObject.SetActive(false);
         active = false;
     }
 

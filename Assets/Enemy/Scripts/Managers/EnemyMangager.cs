@@ -38,6 +38,9 @@ public class EnemyMangager : MonoBehaviour
     //Round events
     [SerializeField] protected IntEventSO onRoundEnd;
 
+    //gameover event
+    [SerializeField] protected EventSO onGameOver;
+
     //Properties
     public int MaxEnemiesAlive { get { return maxEnemiesAlive; } }
 
@@ -62,6 +65,7 @@ public class EnemyMangager : MonoBehaviour
         onPlayerDownedEvent.Action += RemovePlayer;
         onPlayerRevivedEvent.Action += AddPlayer;
         onRoundEnd.Action += IncreaseHealth;
+        onGameOver.Action += OnGameOver;
     }
 
     private void OnDisable()
@@ -72,6 +76,7 @@ public class EnemyMangager : MonoBehaviour
         onPlayerDownedEvent.Action -= RemovePlayer;
         onPlayerRevivedEvent.Action -= AddPlayer;
         onRoundEnd.Action -= IncreaseHealth;
+        onGameOver.Action -= OnGameOver;
     }
 
     private void Start()
@@ -156,7 +161,7 @@ public class EnemyMangager : MonoBehaviour
         {
 
             currentTarget = target;
-            SetTargetToCurrentTarget();
+            SetEnemiesTarget();
         }
 
         targets.Add(target);
@@ -173,21 +178,24 @@ public class EnemyMangager : MonoBehaviour
         if (targets.Count == 0 && playerAlive)
         {
             currentTarget = player;
-            SetTargetToCurrentTarget();
+            SetEnemiesTarget();
         }
         else if(targets.Count == 0 && !playerAlive)
         {
             currentTarget = null;
-            SetTargetToCurrentTarget();
+            SetEnemiesTarget();
         }
         else
         {
             currentTarget = targets[0];
-            SetTargetToCurrentTarget();
+            SetEnemiesTarget();
         }
     }
 
-    private void SetTargetToCurrentTarget()
+    /// <summary>
+    /// Sets enemies target to currentTarget
+    /// </summary>
+    private void SetEnemiesTarget()
     {
         for (int i = 0; i < enemies.Length; i++)
             enemies[i].SetTarget(currentTarget);
@@ -199,7 +207,12 @@ public class EnemyMangager : MonoBehaviour
             currentHealth += 100;
         else
             currentHealth *= 10;
-
-
     }
+
+    private void OnGameOver()
+    {
+        currentTarget = null;
+        SetEnemiesTarget();
+    }
+
 }
