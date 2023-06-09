@@ -49,7 +49,7 @@ public class RayCastGun : Gun
         if (CheckForWallHit(ref hits))
         {
             impactPoint = hits[hits.Length - 1].point; // wall will be last element
-            Debug.Log(impactPoint);
+            //Debug.Log(impactPoint);
             Debug.DrawRay(transform.position, dir * Vector2.Distance(firePoint.position, impactPoint), Color.red, 0.1f);
 
 
@@ -117,7 +117,7 @@ public class RayCastGun : Gun
             {
                 stopIndex = i;
                 Array.Resize(ref hits, stopIndex + 1);
-                Debug.Log(true);
+                //Debug.Log(true);
                 return true;
             }
         }

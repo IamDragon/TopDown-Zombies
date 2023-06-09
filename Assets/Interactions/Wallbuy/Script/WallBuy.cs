@@ -69,7 +69,6 @@ public class WallBuy : WeaponBuy
         else
         {
             interaction.SetInteractionText(" purchase " + gun.name + " " + costText);
-            Debug.Log("player has gun");
         }
     }
 }

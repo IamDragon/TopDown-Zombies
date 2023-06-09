@@ -85,7 +85,7 @@ public class MysteryBoxManager : MonoBehaviour
             if(nextLocation != boxLocationIndex)
             {
                 foundLocation = true;
-                Debug.Log("Next box location: Index " + nextLocation + ", Name" + boxLocations[nextLocation].name);
+                //Debug.Log("Next box location: Index " + nextLocation + ", Name" + boxLocations[nextLocation].name);
             }
         }
          

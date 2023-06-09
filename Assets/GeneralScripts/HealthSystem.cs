@@ -79,7 +79,7 @@ public class HealthSystem : MonoBehaviour
     {
         OnDeath?.Invoke();
         isAlive= false;
-        Debug.Log(this + " Death");
+        //Debug.Log(this + " Death");
     }
 
     public void ResetHealth()

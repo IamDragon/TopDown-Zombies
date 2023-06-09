@@ -39,7 +39,6 @@ public class PerkBuy : Buy
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         //base.OnTriggerEnter2D(collision);
-        Debug.Log(this + " triggerEnter");
         if (collision.transform.parent && collision.transform.parent.CompareTag(interaction.PlayerTag)
             && !Player.Instance.PlayerVariables.isDowned)
         {

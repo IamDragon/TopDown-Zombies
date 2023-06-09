@@ -150,7 +150,7 @@ public abstract class Gun : MonoBehaviour
             else // fill mag and remove maxMagAmmo - leftinmag from remaining ammo
             {
                 magAmmo = maxMagAmmo;
-                Debug.Log("ammoLeftInMag " + ammoLeftInMag);
+                //Debug.Log("ammoLeftInMag " + ammoLeftInMag);
                 stockpileAmmo -= ammoLeftInMag;
             }
         }

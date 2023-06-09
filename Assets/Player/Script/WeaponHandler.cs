@@ -349,7 +349,6 @@ public class WeaponHandler : MonoBehaviour
 
     public bool HasGun(Gun gun)
     {
-        Debug.Log(gun.GunName);
         for(int i= 0; i < guns.Length; i++)
         {
             if (guns[i] == null) continue;

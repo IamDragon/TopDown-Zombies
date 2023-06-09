@@ -41,10 +41,10 @@ public class AnimatedVFXManager : MonoBehaviour
         AnimatedVFX vfx = GetVFX(type);
         if (vfx == null)
         {
-            Debug.Log("vfx was null");
+            Debug.LogWarning("vfx was null");
             return;
         }
-        Debug.Log("playing vfx");
+        //Debug.Log("playing vfx");
         vfx.PlayAnimation();
         vfx.transform.position = position;
         vfx.transform.rotation = rotation;
@@ -53,10 +53,10 @@ public class AnimatedVFXManager : MonoBehaviour
     private AnimatedVFX GetVFX(VFXType type)
     {
         AnimatedVFX vfx = vfxs.Find(fx => !fx.Active && fx.type == type);
-        Debug.Log(type);
+        //Debug.Log(type);
         if (vfx == null)
         {
-            Debug.Log("Couldnt find vfx trying to create new one");
+            //Debug.Log("Couldnt find vfx trying to create new one");
             //causes problems if the type doesnt exist
             AnimatedVFX toInstantiate = FindVFXToInstantiate(type);
             if (toInstantiate == null)
