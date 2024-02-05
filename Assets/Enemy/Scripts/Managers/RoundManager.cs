@@ -15,7 +15,6 @@ public class RoundManager : MonoBehaviour
     public Pathfinding pathFinder;
 
     //delayed enemy spawning
-    public int waitingToSpawn; // how many enemies r waiting to spawn
     [SerializeField] private float spawnDelay;
     [SerializeField] private float maxDistToSpawn;
 
@@ -49,10 +48,10 @@ public class RoundManager : MonoBehaviour
 
     private void EndRound()
     {
-        //Debug.Log("End round");
+        Debug.Log("End round");
         roundStarting = true;
-        Invoke(nameof(StartNextRound), timeBetweenRounds);
         onRoundEnd.Invoke(currentRound + 1); // currentRound wouldnt have been updated yet
+        Invoke(nameof(StartNextRound), timeBetweenRounds);
     }
 
     private void StartNextRound()
@@ -86,7 +85,6 @@ public class RoundManager : MonoBehaviour
         }
         //Debug.Log("amountToSpawn " + amountToSpawn);
 
-        waitingToSpawn = amountToSpawn;
         for (int i = 0; i < amountToSpawn; i++)
         {
             Invoke(nameof(SpawnEnemy), spawnDelay);
@@ -102,14 +100,14 @@ public class RoundManager : MonoBehaviour
             enemy.ResetSelf(spawnPoint);
             enemiesLeftToSpawn--;
             enemiesAlive++;
+            if (enemiesLeftToSpawn < 0)
+                enemiesLeftToSpawn = 0;
         }
         else
         {
             Debug.LogWarning("Enemy not found and could not be spawned");
         }
-        waitingToSpawn--;
-        if (waitingToSpawn < 0)
-            waitingToSpawn = 0;
+
     }
 
     /// <summary>
@@ -162,6 +160,8 @@ public class RoundManager : MonoBehaviour
     private int CalculateEnemiesThisRound()
     {
         //formula for 1 player
-        return Mathf.RoundToInt(0.000058f * Mathf.Pow(currentRound,3f) + 0.074032f * Mathf.Pow(currentRound,2) + 0.718119f * currentRound + 14.738699f);
+        int enemiesThisRound = Mathf.RoundToInt(0.000058f * Mathf.Pow(currentRound, 3f) + 0.074032f * Mathf.Pow(currentRound, 2) + 0.718119f * currentRound + 14.738699f);
+       //Debug.Log("Zombies on round "+currentRound+": " + enemiesThisRound);
+        return enemiesThisRound;
     }
 }

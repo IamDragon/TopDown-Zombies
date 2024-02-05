@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6fc0abd69ece8d4eb9b702ead29418f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundEndEvent: {fileID: 11400000, guid: 019157d3b946a8e44b60e5f38ecff675, type: 2}
+  roundEndEvent: {fileID: 11400000, guid: 1fe3b905a405a9244b156c64f3018a9f, type: 2}
 --- !u!222 &3738856836370432212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2354,7 +2354,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Points
+  m_text: 'Kills
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2666,7 +2668,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Points
+  m_text: Kills
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2922,6 +2924,7 @@ GameObject:
   - component: {fileID: 3738856837472166886}
   - component: {fileID: 3738856837472166887}
   - component: {fileID: 3738856837472166872}
+  - component: {fileID: 1931933550}
   m_Layer: 5
   m_Name: Canvas - HUD
   m_TagString: Untagged
@@ -3020,6 +3023,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1931933550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738856837472166874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b23034ecf277f44b411257f4c97489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGameOver: {fileID: 11400000, guid: 62cd063f25408a4479864b92563e8aaf, type: 2}
+  HUDToHide:
+  - {fileID: 3738856835939229250}
+  - {fileID: 3738856836370432215}
+  - {fileID: 3738856836730956848}
+  - {fileID: 3738856835879905814}
+  - {fileID: 3738856835568519902}
+  - {fileID: 3738856835393428893}
+  - {fileID: 3738856835525649862}
+  - {fileID: 337510881}
 --- !u!1 &4554560024303968823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,7 +3589,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.5764706, g: 0.5764706, b: 0.5764706, a: 0.78039217}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3649,6 +3674,7 @@ MonoBehaviour:
   onToggleScoreboardEvent: {fileID: 11400000, guid: cdf57711da8ddfb45914aa470b07fa65, type: 2}
   onPauseEvent: {fileID: 11400000, guid: 3136ab5a97d7d32418dc04c3c61add93, type: 2}
   onGameOverEvent: {fileID: 11400000, guid: 62cd063f25408a4479864b92563e8aaf, type: 2}
+  scoreboard: {fileID: 3738856837419419355}
   holder: {fileID: 3738856837233716541}
 --- !u!1 &8940639186921995945
 GameObject:

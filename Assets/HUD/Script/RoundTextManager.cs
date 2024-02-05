@@ -14,6 +14,7 @@ public class RoundTextManager : MonoBehaviour
     void Start()
     {
         textElement = GetComponent<TextMeshProUGUI>();
+        Debug.Log(textElement.text);
     }
 
     private void OnEnable()
@@ -28,8 +29,10 @@ public class RoundTextManager : MonoBehaviour
 
     private void UpdateText(int roundNumber)
     {
-        if (textElement == null) return;
+        Debug.Log(textElement.text);
+        //if (textElement == null) return;
 
+        Debug.Log("round end");
         //play animation
         StartCoroutine(RoundChangeAnimation(roundNumber));
     }
