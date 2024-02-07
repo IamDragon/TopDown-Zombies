@@ -10,6 +10,7 @@ public class EnemyMangager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private int maxEnemiesAlive;
+    [SerializeField] private int totalAMountToPool; //number of enemies that are pooled, should be higher than maxenemiesAlive
 
     [Header("Enemy HP")]
     [SerializeField] private float baseHealth;
@@ -49,7 +50,7 @@ public class EnemyMangager : MonoBehaviour
     private void Awake()
     {
         pathfinder = GetComponent<Pathfinding>();
-        enemies = new Enemy[maxEnemiesAlive];
+        enemies = new Enemy[totalAMountToPool];
         targets = new List<Transform>();
         currentTarget = player;
         CreateEnemies();
@@ -88,7 +89,7 @@ public class EnemyMangager : MonoBehaviour
 
     private void CreateEnemies()
     {
-        for (int i = 0; i < maxEnemiesAlive; i++)
+        for (int i = 0; i < totalAMountToPool; i++)
         {
             //Instantiate(enemyPrefab, transform.position, transform.rotation);
             Enemy newEnemy = Instantiate(enemyPrefab, transform.position, transform.rotation, this.transform);

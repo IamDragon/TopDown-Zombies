@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    [SerializeField] private int enemiesPerRound;
     [SerializeField] private int timeBetweenRounds;
     [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Transform defaultSpawnPoint;
     private EnemyMangager enemyManager;
     public int enemiesAlive;
     public int enemiesLeftToSpawn;
@@ -21,8 +21,6 @@ public class RoundManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] protected IntEventSO onRoundEnd;
 
-    private bool roundStarting;
-
     private void Awake()
     {
         enemyManager = GetComponent<EnemyMangager>();
@@ -34,22 +32,13 @@ public class RoundManager : MonoBehaviour
         currentRound = 0;
         foreach (Enemy e in enemyManager.enemies)
             e.HealthSystem.OnDeath += EnemyDied;
+        EndRound(); // start game by ending round 0 
 
-    }
-
-    private void Update()
-    {
-
-        if (enemiesLeftToSpawn == 0 && enemiesAlive == 0 && roundStarting == false)
-        {
-            EndRound();
-        }
     }
 
     private void EndRound()
     {
         Debug.Log("End round");
-        roundStarting = true;
         onRoundEnd.Invoke(currentRound + 1); // currentRound wouldnt have been updated yet
         Invoke(nameof(StartNextRound), timeBetweenRounds);
     }
@@ -59,56 +48,8 @@ public class RoundManager : MonoBehaviour
         currentRound++;
         enemiesLeftToSpawn = CalculateEnemiesThisRound();
         SpawnEnemies();
-        //Debug.Log("roundStartingTrue");
-        roundStarting = false;
     }
 
-    private void NewSpawnEnemies()
-    {
-
-
-    }
-
-    private void SpawnEnemies()
-    {
-        //Debug.Log("spawning enemies");
-        int amountToSpawn;
-        int maxSpawn = enemyManager.MaxEnemiesAlive - enemiesAlive;
-
-        if (maxSpawn <= enemiesLeftToSpawn)
-        {
-            amountToSpawn = maxSpawn;
-        }
-        else//maxSpawn > enemiesLeftToSpawn
-        {
-            amountToSpawn = enemiesLeftToSpawn;
-        }
-        //Debug.Log("amountToSpawn " + amountToSpawn);
-
-        for (int i = 0; i < amountToSpawn; i++)
-        {
-            Invoke(nameof(SpawnEnemy), spawnDelay);
-        }
-    }
-
-    private void SpawnEnemy()
-    {
-        Enemy enemy = enemyManager.GetInactiveEnemy();
-        Vector3 spawnPoint = GetSpawnPoint();
-        if (enemy != null)
-        {
-            enemy.ResetSelf(spawnPoint);
-            enemiesLeftToSpawn--;
-            enemiesAlive++;
-            if (enemiesLeftToSpawn < 0)
-                enemiesLeftToSpawn = 0;
-        }
-        else
-        {
-            Debug.LogWarning("Enemy not found and could not be spawned");
-        }
-
-    }
 
     /// <summary>
     /// Returns a spawnpoint whihc is in the defined range and from which and enemy can reach the player
@@ -120,10 +61,10 @@ public class RoundManager : MonoBehaviour
         //return random position from list
         if (pointsForSpawning.Count == 0)
         {
-            Debug.LogWarning("No spawnpoint found return Vector3.zero");
-            return Vector3.zero;
+            Debug.LogWarning("No spawnpoint found return defaultSpawnPoint");
+            return defaultSpawnPoint.position;
         }
-        return pointsForSpawning[UnityEngine.Random.Range(0, pointsForSpawning.Count-1)].position;
+        return pointsForSpawning[UnityEngine.Random.Range(0, pointsForSpawning.Count - 1)].position;
     }
 
     private bool IsSpawnPointInvalid(Transform spawnPoint)
@@ -154,14 +95,72 @@ public class RoundManager : MonoBehaviour
     private void EnemyDied()
     {
         enemiesAlive--;
-        SpawnEnemies();
+        if (enemiesLeftToSpawn > 0) // still have enemies left to spawn
+            SpawnRemainingEnemies();
+        else if (enemiesLeftToSpawn <= 0 && enemiesAlive <= 0) //nothing to spawn and nothing alive -> round is done
+            EndRound();
     }
 
     private int CalculateEnemiesThisRound()
     {
         //formula for 1 player
         int enemiesThisRound = Mathf.RoundToInt(0.000058f * Mathf.Pow(currentRound, 3f) + 0.074032f * Mathf.Pow(currentRound, 2) + 0.718119f * currentRound + 14.738699f);
-       //Debug.Log("Zombies on round "+currentRound+": " + enemiesThisRound);
+        //Debug.Log("Zombies on round "+currentRound+": " + enemiesThisRound);
         return enemiesThisRound;
+    }
+
+    private void SpawnEnemies()
+    {
+        enemiesLeftToSpawn = CalculateEnemiesThisRound();
+        int amountToSpawn = enemiesLeftToSpawn;
+        if (amountToSpawn <= enemyManager.MaxEnemiesAlive) //less enemies to spawn than total enemies allowed -> spawn all enemies
+        {
+            for (int i = 0; i < amountToSpawn; i++)
+            {
+                SpawnEnemy(GetSpawnPoint());
+            }
+        }
+        else
+        {
+            for (int i = 0; i < enemyManager.MaxEnemiesAlive; i++) //if more enemies spawn than allowed to be alive at once -> spawn max allowed enemies{
+            {
+                SpawnEnemy(GetSpawnPoint());
+            }
+        }
+    }
+
+    //This function will be called when a zombie dies and every x seconds in case an error occurs during spawning -> keep game going with correct amount of zombies even if spawning error occurs
+    private void SpawnRemainingEnemies()
+    {
+        //if already max alive just return
+        if (enemiesAlive == enemyManager.MaxEnemiesAlive) //already max enemies alive dont spawn more
+            return;
+        int maxAmountToSpawn = enemyManager.MaxEnemiesAlive - enemiesAlive;
+        if (maxAmountToSpawn >= enemiesLeftToSpawn) // spawn thr rest of the enemies for the round
+        {
+            for (int i = 0; i < enemiesLeftToSpawn; i++)
+            {
+                SpawnEnemy(GetSpawnPoint());
+            }
+        }
+        else //less -> spawn max amount to fill up
+        {
+            for (int i = 0; i < maxAmountToSpawn; i++)
+            {
+                SpawnEnemy(GetSpawnPoint());
+            }
+        }
+    }
+
+    private void SpawnEnemy(Vector3 spawnPoint)
+    {
+        Enemy enemy = enemyManager.GetInactiveEnemy();
+        if (enemy == null) return; // enemy not found -> do not do anything to indicate that one has been spawned
+
+        //update relevant variables to ensure  the right amount is spawned every round
+        enemiesLeftToSpawn--;
+        enemiesAlive++;
+        enemy.ResetSelf(spawnPoint);
+        return;
     }
 }
