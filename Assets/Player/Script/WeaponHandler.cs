@@ -31,6 +31,7 @@ public class WeaponHandler : MonoBehaviour
     [Header("Events")]
     [SerializeField] private GunEventSO onSwitchGunEvent;
     [SerializeField] private IntIntEventSO onUpdateAmmoEvent;
+    [SerializeField] protected EventSO onMaxAmmoEvent;
 
 
     private bool extraShot;
@@ -54,10 +55,12 @@ public class WeaponHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        onMaxAmmoEvent.Action += FillAmmoForAllGuns;
     }
 
     private void OnDisable()
     {
+        onMaxAmmoEvent.Action -= FillAmmoForAllGuns;
     }
 
     private void CreateStartingGuns()
@@ -193,14 +196,14 @@ public class WeaponHandler : MonoBehaviour
     private int FindIndexForGun()
     {
         int index = -1;
-        for(int i = 0; i < guns.Length; i++)
+        for (int i = 0; i < guns.Length; i++)
         {
             if (i == guns.Length - 1 && !CanHoldExtraGun)
                 continue;
             if (guns[i] == null)
             {
                 //check if CanHoldExtragun
-                index = i; 
+                index = i;
                 break;
             }
         }
@@ -236,7 +239,7 @@ public class WeaponHandler : MonoBehaviour
     /// <param name="newGun"></param>
     public void ReplaceCurrentGun(Gun newGun, int currentIndex)
     {
-        
+
         if (activeGun != null)
         {
             activeGun.CancelReload(); //causes problems when picking up upgraded weapon
@@ -320,7 +323,7 @@ public class WeaponHandler : MonoBehaviour
         for (int i = 0; i < guns.Length; i++)
         {
             if (activeGun == guns[i])
-             return i; 
+                return i;
         }
 
         return -1;
@@ -334,7 +337,7 @@ public class WeaponHandler : MonoBehaviour
                 continue;
             if (guns[i].GunType == validDownedGunType)
                 return guns[i];
-            
+
         }
 
         return null;
@@ -349,7 +352,7 @@ public class WeaponHandler : MonoBehaviour
 
     public bool HasGun(Gun gun)
     {
-        for(int i= 0; i < guns.Length; i++)
+        for (int i = 0; i < guns.Length; i++)
         {
             if (guns[i] == null) continue;
 
@@ -359,14 +362,32 @@ public class WeaponHandler : MonoBehaviour
         return false;
     }
 
+    private void FillAmmoForAllGuns()
+    {
+        for (int i = 0; i < guns.Length; i++)
+        {
+            if (guns[i] == null)
+                continue;
+            guns[i].FillAmmo();
+
+        }
+        onUpdateAmmoEvent.Invoke(activeGun.CurrentMagAmmo, activeGun.StockpileAmmo);
+    }
+
     public void FillAmmoForGun(Gun gun)
     {
         //loop through guns and FillAmmo on specific gun
-        for(int i = 0; i < guns.Length; i++)
-            if(gun == guns[i])
+        for (int i = 0; i < guns.Length; i++)
+        {
+            if (guns[i] == null)
+                continue;
+
+            if (gun.GunName == guns[i].GunName)
             {
                 Debug.Log("filling ammo");
-                gun.FillAmmo();
+                guns[i].FillAmmo();
+                break;
             }
+        }
     }
 }

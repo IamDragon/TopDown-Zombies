@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375854117195925703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1188845427
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a4dac625cf0964f448c25300d6c32f6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375854117742501873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.77, y: -0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -202,6 +202,8 @@ MonoBehaviour:
   baseReloadSpeedMultiplier: 1
   reloadSpeedMultiplier: 0
   onSwitchGunEvent: {fileID: 11400000, guid: d01a67c5a8461094f998c5bc7d94b76a, type: 2}
+  onUpdateAmmoEvent: {fileID: 11400000, guid: d13bfab1dbe21fd4b81225bd9aab5783, type: 2}
+  onMaxAmmoEvent: {fileID: 11400000, guid: 26395a7bbf9f5534385cf957173e584b, type: 2}
 --- !u!1 &4375854118412526370
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +226,7 @@ GameObject:
   - component: {fileID: 4375854118412526387}
   - component: {fileID: 4375854118412526386}
   - component: {fileID: 4375854118412526389}
+  - component: {fileID: 1412264322}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -285,10 +288,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 1
   maxWalkSpeed: 5
-  maxRunSpeed: 10
+  maxRunSpeed: 7
   downedSpeed: 1
   damageInfo: {fileID: 11400000, guid: 2a99d5ccef37f6647b12129de0e733d3, type: 2}
-  grenadeSpeed: 2
+  grenadeSpeed: 7
   grenadeRange: 0
   reviveTime: 5
   isDowned: 0
@@ -305,7 +308,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUse: {fileID: 11400000, guid: 58b53841ba90ab240a4a9ca6108d3b64, type: 2}
-  onMelee: {fileID: 0}
+  onPauseToggled: {fileID: 11400000, guid: 6e551e354a52f2f4fa674dc72a9b0a45, type: 2}
+  onGameOver: {fileID: 11400000, guid: 62cd063f25408a4479864b92563e8aaf, type: 2}
 --- !u!114 &4375854118412526373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grenade: {fileID: -1894939418759667751, guid: 634ba690b40f26843a11f6250da82e45, type: 3}
-  grenades: 0
+  grenades: 3
   maxGrenades: 3
   spawnPoint: {fileID: 4375854117742501872}
   onGrenadeFillEvent: {fileID: 11400000, guid: 34392ca44a66cd54c86f137fbf76c581, type: 2}
@@ -365,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointInfo: {fileID: 11400000, guid: 8f7aacc64b256834ab32c39cd9fbb57f, type: 2}
   points: 500
-  infinitePoints: 1
+  infinitePoints: 0
   enemyNormalDeathEvent: {fileID: 11400000, guid: 8c24ca97933b4d747b8a1e541cf8ccc9, type: 2}
   enemyHeadshotDeathEvent: {fileID: 11400000, guid: 21d57acf4107f2e43aaa2786510164e2, type: 2}
   enemyKnifeDeathEvent: {fileID: 11400000, guid: 05fd5584803d064418d7d8dac18c5294, type: 2}
@@ -425,12 +429,14 @@ MonoBehaviour:
   currentMaxHealth: 150
   maxHealth: 250
   health: 0
-  invincibilityTime: 0
+  invincibilityTime: 0.5
   invincible: 0
   downsBeforeDeath: 4
+  downCount: 0
   healthGainPerInterval: 10
   delayBeforeHealingStarts: 2
   delayBetweenHealthGain: 0.5
+  onPlayerTrueDeath: {fileID: 11400000, guid: c595b88ee8e9c3c45a8cd25213ac15cd, type: 2}
 --- !u!114 &4375854118412526387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,6 +486,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dc2aa339b4be94583ffac08fd6ff0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1412264322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375854118412526370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3461ba6315dd3e445bb7f07fc52a8c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionButton: 291
+  fireButton: 323
+  reloadButton: 0
+  grenadeButton: 103
+  switchWeapon1: 49
+  switchWeapon2: 50
+  switchWeapon3: 51
+  menuButton: 27
+  scoreBoardButton: 9
+  moveLeftButton: 97
+  moveRightButton: 100
+  moveUpButton: 119
+  moveDownButton: 115
+  sprintButton: 304
 --- !u!1 &4375854118679709435
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375854118679709435}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

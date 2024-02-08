@@ -18,7 +18,7 @@ public class WallBuy : WeaponBuy
             DoThing();
             Player.Instance.PointManager.RemovePoints(cost);
         }
-        else if (CanBuyAmmo() && Player.Instance.WeaponHandler.HasGun(gun)) // doesn't already have full ammo
+        else if (CanBuyAmmo() && Player.Instance.WeaponHandler.HasGun(gun)) // doesn't check if already has full ammo
         {
             //Give ammo to player
             BuyAmmo();
