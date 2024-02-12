@@ -131,9 +131,9 @@ public class RayCastGun : Gun
         return false;
     }
 
-    public override void Init(WeaponHandler weaponHandler, bool isDowenedGun)
+    public override void Init(WeaponHandler weaponHandler)
     {
-        base.Init(weaponHandler, isDowenedGun);
+        base.Init(weaponHandler);
         CalculateHitMask();
     }
 

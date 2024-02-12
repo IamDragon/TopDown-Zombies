@@ -169,12 +169,10 @@ MonoBehaviour:
   gunName: M1911
   spriteRenderer: {fileID: 8954136145932299407}
   muzzleFlashTime: 0.1
-  ammoPreset: {fileID: 11400000, guid: 4fa3d6b31be4c674db0603b200fef079, type: 2}
-  downedAmmoPreset: {fileID: 11400000, guid: 79cabac6b54f4204c81021113a4540fb, type: 2}
-  magAmmo: 0
-  maxMagAmmo: 0
-  stockpileAmmo: 0
-  maxStockpileAmmo: 0
+  magAmmo: 8
+  maxMagAmmo: 8
+  stockpileAmmo: 80
+  maxStockpileAmmo: 80
   damage: 20
   headShotMultiplier: 1.35
   gunType: 0

@@ -137,12 +137,10 @@ MonoBehaviour:
   gunName: Winchester-12
   spriteRenderer: {fileID: 1816953179445158242}
   muzzleFlashTime: 0.1
-  ammoPreset: {fileID: 11400000, guid: 4fa3d6b31be4c674db0603b200fef079, type: 2}
-  downedAmmoPreset: {fileID: 0}
-  magAmmo: 0
-  maxMagAmmo: 0
-  stockpileAmmo: 0
-  maxStockpileAmmo: 0
+  magAmmo: 5
+  maxMagAmmo: 5
+  stockpileAmmo: 60
+  maxStockpileAmmo: 60
   damage: 15
   headShotMultiplier: 1.1
   gunType: 5

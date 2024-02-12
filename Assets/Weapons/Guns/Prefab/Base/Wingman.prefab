@@ -137,12 +137,10 @@ MonoBehaviour:
   gunName: Wingman
   spriteRenderer: {fileID: 5639134344816935147}
   muzzleFlashTime: 0.1
-  ammoPreset: {fileID: 11400000, guid: 0a634cfe63f821a4caeeacc23f617b89, type: 2}
-  downedAmmoPreset: {fileID: 11400000, guid: 0e277a4d7c0f17144a77735ef346b55d, type: 2}
   magAmmo: 7
   maxMagAmmo: 7
-  stockpileAmmo: 0
-  maxStockpileAmmo: 0
+  stockpileAmmo: 70
+  maxStockpileAmmo: 70
   damage: 150
   headShotMultiplier: 1.15
   gunType: 0

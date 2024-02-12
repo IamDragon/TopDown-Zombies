@@ -18,8 +18,6 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] private float muzzleFlashTime;
 
     [Header("Ammo")]
-    [SerializeField] protected AmmoPreset ammoPreset;
-    [SerializeField] protected AmmoPreset downedAmmoPreset;
     [SerializeField] protected int magAmmo;
     [SerializeField] protected int maxMagAmmo;
     [SerializeField] protected int stockpileAmmo;
@@ -100,14 +98,6 @@ public abstract class Gun : MonoBehaviour
     protected virtual void Start()
     {
         flashes = GetComponentInChildren<MuzzleFlashes>();
-    }
-
-    public void SetAmmoPreset(bool isDownedGun)
-    {
-        if (isDownedGun)
-            LoadAmmoPreset(downedAmmoPreset);
-        else
-            LoadAmmoPreset(ammoPreset);
     }
 
     private void LoadAmmoPreset(AmmoPreset preset)
@@ -242,14 +232,10 @@ public abstract class Gun : MonoBehaviour
         onReloadEvent.Invoke(magAmmo, stockpileAmmo);
     }
 
-    public virtual void Init(WeaponHandler weaponHandler, bool isDowenedGun)
+    public virtual void Init(WeaponHandler weaponHandler)
     {
         this.weaponHandler = weaponHandler;
         damageInfo = weaponHandler.DamageInfo;
-        SetAmmoPreset(isDowenedGun);
-
-        if (downedAmmoPreset == null)
-            downedAmmoPreset = ammoPreset;
 
         secondsPerShot = 1 / fireRate;
         isFiring = false;

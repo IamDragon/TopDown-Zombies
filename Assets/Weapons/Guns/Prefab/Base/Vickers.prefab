@@ -85,12 +85,10 @@ MonoBehaviour:
   gunName: Vickers
   spriteRenderer: {fileID: 7769682119278087069}
   muzzleFlashTime: 0.1
-  ammoPreset: {fileID: 11400000, guid: 146f4f9fc3086c94191372dc1f55499c, type: 2}
-  downedAmmoPreset: {fileID: 0}
   magAmmo: 80
   maxMagAmmo: 80
-  stockpileAmmo: 0
-  maxStockpileAmmo: 0
+  stockpileAmmo: 400
+  maxStockpileAmmo: 400
   damage: 15
   headShotMultiplier: 1.2
   gunType: 2

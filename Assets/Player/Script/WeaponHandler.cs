@@ -75,15 +75,15 @@ public class WeaponHandler : MonoBehaviour
                 Debug.LogWarning("More guns in startingGuns than maxGuns allows; breaking");
                 break;
             }
-            Gun newGun = CreateGun(startingGuns[i], false);
+            Gun newGun = CreateGun(startingGuns[i]);
             guns[i] = newGun;
         }
     }
 
-    private Gun CreateGun(Gun gun, bool isDownedGun)
+    private Gun CreateGun(Gun gun)
     {
         Gun newGun = Instantiate(gun, transform.position, transform.rotation, this.transform);
-        newGun.Init(this, isDownedGun);
+        newGun.Init(this);
         return newGun;
     }
 
@@ -185,7 +185,7 @@ public class WeaponHandler : MonoBehaviour
             guns[index].CancelReload();
             Destroy(guns[index].gameObject);
         }
-        guns[index] = CreateGun(newGun, false);
+        guns[index] = CreateGun(newGun);
         SwitchToGun(index);
     }
 
@@ -247,7 +247,7 @@ public class WeaponHandler : MonoBehaviour
             Destroy(activeGun.gameObject);
         }
 
-        Gun gun = CreateGun(newGun, false);
+        Gun gun = CreateGun(newGun);
         activeGun = gun;
     }
 
@@ -306,14 +306,13 @@ public class WeaponHandler : MonoBehaviour
         Gun validGun = GetValidDownedGun();// get valid gun
         if (validGun != null) //if there is a valid gun create it
         {
-            activeGun = CreateGun(validGun, true);
+            activeGun = CreateGun(validGun);
             EquipGun(activeGun);
         }
 
         if (activeGun == null) // if no valid gun equip base valid gun
         {
             Debug.Log("activeGun was null, setting to default downed gun");
-            defaultDownedGun.SetAmmoPreset(true);
             EquipGun(defaultDownedGun);
         }
     }

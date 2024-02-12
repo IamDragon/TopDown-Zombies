@@ -271,12 +271,10 @@ MonoBehaviour:
   gunName: Mp-40
   spriteRenderer: {fileID: 0}
   muzzleFlashTime: 0.1
-  ammoPreset: {fileID: 11400000, guid: ddbe9cc386a4d4240abfa42662169e13, type: 2}
-  downedAmmoPreset: {fileID: 0}
   magAmmo: 30
   maxMagAmmo: 30
-  stockpileAmmo: 0
-  maxStockpileAmmo: 0
+  stockpileAmmo: 180
+  maxStockpileAmmo: 180
   damage: 16
   headShotMultiplier: 1.4
   gunType: 2
