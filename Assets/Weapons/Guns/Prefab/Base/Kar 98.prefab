@@ -57,19 +57,19 @@ MonoBehaviour:
   maxMagAmmo: 5
   stockpileAmmo: 80
   maxStockpileAmmo: 80
-  damage: 0
-  headShotMultiplier: 0
+  damage: 100
+  headShotMultiplier: 2
   gunType: 4
-  bulletVelocity: 0
-  range: 0
+  bulletVelocity: 150
+  range: 50
   triggerFire: 1
-  fireRate: 0
-  reloadTime: 0
+  fireRate: 1
+  reloadTime: 1.5
   firePoint: {fileID: 1379918285442494219}
   stoppingLayer:
     serializedVersion: 2
     m_Bits: 128
-  bulletTrail: {fileID: 0}
+  bulletTrail: {fileID: 3757806640855412975, guid: 01aea000c00db7345b40b31dcfa9c73c, type: 3}
 --- !u!114 &5488844061212536331
 MonoBehaviour:
   m_ObjectHideFlags: 0
