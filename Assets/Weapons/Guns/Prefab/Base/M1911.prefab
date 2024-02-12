@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromParent: 1
+  addedRotation: 0
 --- !u!114 &7739595430758571916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +333,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1398348257}
     m_Modifications:
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_PointLightInnerAngle
+      value: 81.509415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_PointLightOuterAngle
+      value: 81.509415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 352303955
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: -55881183
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[3]
+      value: -1405475311
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[4]
+      value: -778444059
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[5]
+      value: -1188845427
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[6]
+      value: 1284604167
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[7]
+      value: -2072658863
+      objectReference: {fileID: 0}
     - target: {fileID: 5302273057809933038, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -380,15 +429,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuzzleFlash_up_small
       objectReference: {fileID: 0}
-    - target: {fileID: 7669152939064721024, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
-      propertyPath: m_SortingLayer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669152939064721024, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1284604167
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
 --- !u!4 &3283381909007191628 stripped
 Transform:

@@ -17,6 +17,7 @@ public class PlayerHealthSystem : HealthSystem
 
     [Header("Events")]
     [SerializeField] protected EventSO onPlayerTrueDeath;
+    [SerializeField] protected FloatFloatEventSO onPlayerHealthUpdate;
 
     public bool QuickReviveActive { get; set; }
 
@@ -30,7 +31,7 @@ public class PlayerHealthSystem : HealthSystem
     protected override void Death()
     {
         base.Death();
-        if(downCount >= downsBeforeDeath  || !QuickReviveActive )
+        if (downCount >= downsBeforeDeath || !QuickReviveActive)
             TrueDeath();
         else
             EnterDownState();
@@ -60,16 +61,17 @@ public class PlayerHealthSystem : HealthSystem
     private void StartHealing()
     {
         if (Health < currentMaxHealth)
-        { 
+        {
             Invoke(nameof(StartHealing), delayBetweenHealthGain);
             GainHealth(healthGainPerInterval);
+            onPlayerHealthUpdate.Invoke(Health, currentMaxHealth);
 
         }
     }
 
     private void Heal()
     {
-        GainHealth(healthGainPerInterval); 
+        GainHealth(healthGainPerInterval);
     }
 
     public override bool TakeDamage(float amount)
@@ -77,6 +79,7 @@ public class PlayerHealthSystem : HealthSystem
         bool died = base.TakeDamage(amount);
         CancelInvoke(nameof(StartHealing));
         Invoke(nameof(StartHealing), delayBeforeHealingStarts);
+        onPlayerHealthUpdate.Invoke(Health, currentMaxHealth);
         return died;
     }
 }

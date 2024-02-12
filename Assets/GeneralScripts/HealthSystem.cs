@@ -25,7 +25,13 @@ public class HealthSystem : MonoBehaviour
     public Action OnDeath;
     public Action OnTakeDamage;
 
+    /// <summary>
+    /// Returns the absolute maxHealth
+    /// </summary>
     public float MaxHealth { get { return maxHealth; } }
+    /// <summary>
+    /// Returns currentHealth
+    /// </summary>
     public float Health { get { return health; } }
     public bool IsAlive { get { return isAlive; } set { isAlive = value; }}
 
