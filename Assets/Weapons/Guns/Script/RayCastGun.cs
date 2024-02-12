@@ -18,6 +18,7 @@ public class RayCastGun : Gun
 
     protected override IEnumerator FireBullet(DamageInfo damageInfo)
     {
+        StartCoroutine(base.FireBullet(damageInfo));
         isFiring = true;
         magAmmo -= 1;
 
@@ -41,11 +42,7 @@ public class RayCastGun : Gun
         Vector2 dir = CalculateBulletDir();
         RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, dir, range, hitMask);
         Vector2 impactPoint = Vector2.zero;
-        //if (hits.Length > 0) // if we hit anything check for walls
-        //{
-        //    CheckForWallHit(ref hits);
-        //    //impactPoint;
-        //}
+
         if (CheckForWallHit(ref hits))
         {
             impactPoint = hits[hits.Length - 1].point; // wall will be last element
@@ -137,24 +134,6 @@ public class RayCastGun : Gun
         CalculateHitMask();
     }
 
-
-    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 endpoint)
-    {
-        float time = 0;
-        Vector3 startPosition = trail.transform.position;
-
-        while(time<1)
-        {
-            trail.transform.position = Vector3.Lerp(startPosition, endpoint, time);
-            time += Time.deltaTime /trail.time;
-
-            yield return null;
-        }
-
-        trail.transform.position = endpoint;
-
-        Destroy(trail.gameObject, trail.time);
-    }
 
     private IEnumerator SpawnTrail(TrailRenderer trail, Vector2 endpoint)
     {

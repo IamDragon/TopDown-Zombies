@@ -10,6 +10,7 @@ public class ProjectileGun : Gun
 
     protected override IEnumerator FireBullet(DamageInfo damageInfo)
     {
+        base.FireBullet(damageInfo);
         isFiring = true;
         magAmmo -= 1;
         SpawnBullet(damageInfo);

@@ -48,6 +48,7 @@ public abstract class Gun : MonoBehaviour
     private WeaponHandler weaponHandler;
     protected DamageInfo damageInfo;
     private MuzzleFlashes flashes;
+    protected RandomAudioPlayer audioPlayer;
     //private SpriteRenderer spriteRenderer;
 
     public enum Type
@@ -98,15 +99,7 @@ public abstract class Gun : MonoBehaviour
     protected virtual void Start()
     {
         flashes = GetComponentInChildren<MuzzleFlashes>();
-    }
-
-    private void LoadAmmoPreset(AmmoPreset preset)
-    {
-        maxMagAmmo = preset.maxMagAmmo;
-        magAmmo = maxMagAmmo;
-        stockpileAmmo = preset.startingAmmo;
-        maxStockpileAmmo = preset.maxAmmoCapacity;
-        onReloadEvent.Invoke(magAmmo, stockpileAmmo);
+        audioPlayer = GetComponent<RandomAudioPlayer>();
     }
 
     public virtual void StartReload()
@@ -202,7 +195,11 @@ public abstract class Gun : MonoBehaviour
         triggerHasBeenReleased = true;
     }
 
-    protected abstract IEnumerator FireBullet(DamageInfo damageInfo);
+    protected virtual IEnumerator FireBullet(DamageInfo damageInfo)
+    {
+        audioPlayer.PlayRandomAudio();
+        yield return new WaitForSeconds(0); // we dont want to do anything here really
+    }
 
     /// <summary>
     /// Returns direction to mouse from firingPoint
@@ -244,5 +241,8 @@ public abstract class Gun : MonoBehaviour
 
 
 
-    protected abstract void FireExtraBullet(DamageInfo damageInfo);
+    protected virtual void FireExtraBullet(DamageInfo damageInfo)
+    {
+        audioPlayer.PlayRandomAudio();
+    }
 }

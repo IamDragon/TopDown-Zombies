@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RandomAudioPlayer : MonoBehaviour
+{
+
+    [SerializeField] private AudioClip[] clips;
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayRandomAudio()
+    {
+        Debug.Log("Playing audio");
+        int audioIndex = Random.Range(0, clips.Length - 1);
+        audioSource.clip = clips[audioIndex];
+        audioSource.PlayOneShot(clips[audioIndex]);
+    }
+}
