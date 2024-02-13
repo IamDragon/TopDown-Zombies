@@ -15,7 +15,9 @@ public class RoundManager : MonoBehaviour
     public Pathfinding pathFinder;
 
     //delayed enemy spawning
-    [SerializeField] private float spawnDelay;
+    [Header("Spawning")]
+    [SerializeField] private float minSpawnDelay;
+    [SerializeField] private float maxSpawnDelay;
     [SerializeField] private float maxDistToSpawn;
 
     [Header("Events")]
@@ -47,7 +49,7 @@ public class RoundManager : MonoBehaviour
     {
         currentRound++;
         enemiesLeftToSpawn = CalculateEnemiesThisRound();
-        SpawnEnemies();
+        StartCoroutine(SpawnEnemies());
     }
 
 
@@ -96,7 +98,7 @@ public class RoundManager : MonoBehaviour
     {
         enemiesAlive--;
         if (enemiesLeftToSpawn > 0) // still have enemies left to spawn
-            SpawnRemainingEnemies();
+            StartCoroutine(SpawnRemainingEnemies());
         else if (enemiesLeftToSpawn <= 0 && enemiesAlive <= 0) //nothing to spawn and nothing alive -> round is done
             EndRound();
     }
@@ -109,7 +111,7 @@ public class RoundManager : MonoBehaviour
         return enemiesThisRound;
     }
 
-    private void SpawnEnemies()
+    private IEnumerator SpawnEnemies()
     {
         enemiesLeftToSpawn = CalculateEnemiesThisRound();
         int amountToSpawn = enemiesLeftToSpawn;
@@ -118,6 +120,7 @@ public class RoundManager : MonoBehaviour
             for (int i = 0; i < amountToSpawn; i++)
             {
                 SpawnEnemy(GetSpawnPoint());
+                yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnDelay, maxSpawnDelay));
             }
         }
         else
@@ -125,22 +128,24 @@ public class RoundManager : MonoBehaviour
             for (int i = 0; i < enemyManager.MaxEnemiesAlive; i++) //if more enemies spawn than allowed to be alive at once -> spawn max allowed enemies{
             {
                 SpawnEnemy(GetSpawnPoint());
+                yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnDelay, maxSpawnDelay));
             }
         }
     }
 
     //This function will be called when a zombie dies and every x seconds in case an error occurs during spawning -> keep game going with correct amount of zombies even if spawning error occurs
-    private void SpawnRemainingEnemies()
+    private IEnumerator SpawnRemainingEnemies()
     {
         //if already max alive just return
         if (enemiesAlive == enemyManager.MaxEnemiesAlive) //already max enemies alive dont spawn more
-            return;
+            yield break;
         int maxAmountToSpawn = enemyManager.MaxEnemiesAlive - enemiesAlive;
         if (maxAmountToSpawn >= enemiesLeftToSpawn) // spawn thr rest of the enemies for the round
         {
             for (int i = 0; i < enemiesLeftToSpawn; i++)
             {
                 SpawnEnemy(GetSpawnPoint());
+                yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnDelay, maxSpawnDelay));
             }
         }
         else //less -> spawn max amount to fill up
@@ -148,12 +153,14 @@ public class RoundManager : MonoBehaviour
             for (int i = 0; i < maxAmountToSpawn; i++)
             {
                 SpawnEnemy(GetSpawnPoint());
+                yield return new WaitForSeconds(UnityEngine.Random.Range(minSpawnDelay, maxSpawnDelay));
             }
         }
     }
 
     private void SpawnEnemy(Vector3 spawnPoint)
     {
+
         Enemy enemy = enemyManager.GetInactiveEnemy();
         if (enemy == null) return; // enemy not found -> do not do anything to indicate that one has been spawned
 
