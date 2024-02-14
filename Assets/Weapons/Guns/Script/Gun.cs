@@ -48,7 +48,7 @@ public abstract class Gun : MonoBehaviour
     private WeaponHandler weaponHandler;
     protected DamageInfo damageInfo;
     private MuzzleFlashes flashes;
-    protected RandomAudioPlayer audioPlayer;
+    protected WeaponAudioManager audioPlayer;
     //private SpriteRenderer spriteRenderer;
 
     public enum Type
@@ -99,7 +99,7 @@ public abstract class Gun : MonoBehaviour
     protected virtual void Start()
     {
         flashes = GetComponentInChildren<MuzzleFlashes>();
-        audioPlayer = GetComponent<RandomAudioPlayer>();
+        audioPlayer = GetComponent<WeaponAudioManager>();
     }
 
     public virtual void StartReload()
@@ -112,6 +112,7 @@ public abstract class Gun : MonoBehaviour
     protected virtual IEnumerator Reload()
     {
         isReloading = true;
+        audioPlayer.PlayReloadSound();
 
         if (weaponHandler)
             yield return new WaitForSeconds(reloadTime * weaponHandler.ReloadSpeedMultiplier);
@@ -197,7 +198,7 @@ public abstract class Gun : MonoBehaviour
 
     protected virtual IEnumerator FireBullet(DamageInfo damageInfo)
     {
-        audioPlayer.PlayRandomAudio();
+        audioPlayer.PlayShootSound();
         yield return new WaitForSeconds(0); // we dont want to do anything here really
     }
 
@@ -243,6 +244,6 @@ public abstract class Gun : MonoBehaviour
 
     protected virtual void FireExtraBullet(DamageInfo damageInfo)
     {
-        audioPlayer.PlayRandomAudio();
+        audioPlayer.PlayShootSound();
     }
 }

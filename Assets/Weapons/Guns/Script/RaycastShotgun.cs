@@ -9,7 +9,7 @@ public class RaycastShotgun : RayCastGun
 
     protected override IEnumerator FireBullet(DamageInfo damageInfo)
     {
-        audioPlayer.PlayRandomAudio();
+        audioPlayer.PlayShootSound();
         isFiring = true;
         magAmmo -= 1;
 

@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2859048713554764698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.07, y: 0.07, z: -10.772747}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6129715364281459789}
@@ -139,6 +139,7 @@ MonoBehaviour:
   explosionRadius: 5
   damage: 100
   explosionType: 0
+  explosionSounds: []
   fuseTime: 5
   onMonkeyBombStartEvent: {fileID: 0}
   onMonkeyBombEndEvent: {fileID: 0}
@@ -207,6 +208,8 @@ MonoBehaviour:
   explosionRadius: 5
   damage: 50
   explosionType: 1
+  explosionSounds:
+  - {fileID: 8300000, guid: 04842d7f6db125f48868862e7f30c4e4, type: 3}
   fuseTime: 3
 --- !u!114 &-5377651433735548569
 MonoBehaviour:

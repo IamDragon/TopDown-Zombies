@@ -9,6 +9,10 @@ public class Buy : MonoBehaviour
     [Header("Cost")]
     [SerializeField] protected int cost;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip purchaseAcceptedClip;
+    [SerializeField] private AudioClip purchaseDeniedClip;
+    AudioSource audioSource;
 
     [Header("Event")]
     [SerializeField] protected EventSO onInteractionTriggerdEvent;
@@ -26,6 +30,7 @@ public class Buy : MonoBehaviour
         interactionText = "Press E" + " to";
         interaction = GetComponent<Interaction>();
         SetInteractionText();
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -51,7 +56,9 @@ public class Buy : MonoBehaviour
             Player.Instance.PointManager.RemovePoints(cost);
         }
         else
-            onCantAffordEvent.Invoke();
+        {
+
+        }
 
     }
     /// <summary>
@@ -59,7 +66,13 @@ public class Buy : MonoBehaviour
     /// </summary>
     protected virtual void DoThing()
     {
+        audioSource.PlayOneShot(purchaseAcceptedClip);
+    }
 
+    protected virtual void CantPurchase()
+    {
+        onCantAffordEvent.Invoke();
+        audioSource.PlayOneShot(purchaseDeniedClip);
     }
 
 
