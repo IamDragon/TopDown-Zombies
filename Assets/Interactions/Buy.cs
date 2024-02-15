@@ -10,9 +10,9 @@ public class Buy : MonoBehaviour
     [SerializeField] protected int cost;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip purchaseAcceptedClip;
-    [SerializeField] private AudioClip purchaseDeniedClip;
-    AudioSource audioSource;
+    [SerializeField] protected AudioClip purchaseAcceptedClip;
+    [SerializeField] protected AudioClip purchaseDeniedClip;
+    protected AudioSource audioSource;
 
     [Header("Event")]
     [SerializeField] protected EventSO onInteractionTriggerdEvent;

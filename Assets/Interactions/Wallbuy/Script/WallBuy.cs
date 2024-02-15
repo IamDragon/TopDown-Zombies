@@ -25,12 +25,13 @@ public class WallBuy : WeaponBuy
             Player.Instance.PointManager.RemovePoints(ammoCost);
         }
         else
-            onCantAffordEvent.Invoke();
+            CantPurchase();
     }
 
     //change to inherit weaponbuy and to follow the standar weaponhandler interaction
     protected override void DoThing()
     {
+        base.DoThing();
         Player.Instance.WeaponHandler.ReceiveNewGun(gun);
         SetInteractionText();
         interaction.ShowText();

@@ -9,6 +9,7 @@ public class DoorBuy : Buy
     [SerializeField] private GameObject door;
     protected override void DoThing()
     {
+        base.DoThing();
         door.SetActive(false);
         onMapUpdate.Invoke();
     }
