@@ -5,6 +5,7 @@ using UnityEngine;
 public class MysteryBox : WeaponBuyDelayed
 {
     [SerializeField] private MysterBoxWeapons mysteryBoxWeapons;
+    [SerializeField] private AudioClip boxJingle;
     private MysteryBoxManager mysteryBoxManager;
     private MysteryBoxWeapon boxGun;
     private Animator animator;
@@ -30,10 +31,10 @@ public class MysteryBox : WeaponBuyDelayed
         gameObject.SetActive(false);//animation needs to be played when box is removed
     }
 
-    public void Init(MysteryBoxManager manager, int mysterBoxcost)
+    public void Init(MysteryBoxManager manager, int mysteryBoxcost)
     {
         mysteryBoxManager = manager;
-        cost = mysterBoxcost;
+        cost = mysteryBoxcost;
     }
 
     public void SetCost(int newCost)
@@ -58,6 +59,7 @@ public class MysteryBox : WeaponBuyDelayed
         //animation - animation starts random weapon shuffle once box is opened
         //Invoke(nameof(weaponAnimation.StartAnimation), )
         weaponAnimation.StartAnimation();
+        audioSource.PlayOneShot(boxJingle);
         animator.Play("Chest_empty_open");
     }
 

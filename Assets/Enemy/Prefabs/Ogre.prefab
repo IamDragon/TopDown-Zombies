@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 383766804488411295}
   - component: {fileID: 383766804488411288}
   - component: {fileID: 810074005658481559}
-  - component: {fileID: -4721263405678287125}
-  - component: {fileID: -7531522115221931775}
+  - component: {fileID: -6087802781299239038}
   - component: {fileID: 3463843356686430212}
   m_Layer: 6
   m_Name: Ogre
@@ -155,7 +154,7 @@ MonoBehaviour:
   bounds: {x: 1, y: 2}
   range: 1
   distanceToAttack: 2
---- !u!114 &-4721263405678287125
+--- !u!114 &-6087802781299239038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,29 +163,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 383766804156574499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee20cbc6c83960e4fad78dc20d6f993e, type: 3}
+  m_Script: {fileID: 11500000, guid: f6f5ee5e4d715364e81981d401814738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentToPlaySound: 4.4
-  interval: 5
---- !u!114 &-7531522115221931775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383766804156574499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acadd41d1e21e6346a272f34b6ef8163, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
+  enemyHurtClips:
+  - {fileID: 8300000, guid: 05d3bb90b05ed034b8d5f6b8a7c4d6b9, type: 3}
+  enemyChaseClips:
   - {fileID: 8300000, guid: be18aced12baa5a4da19423453c3bc9d, type: 3}
   - {fileID: 8300000, guid: e2a74aa819eaac74b8600908d9caaba5, type: 3}
   - {fileID: 8300000, guid: 6f3202c3ba3157440a0f9ae47429a742, type: 3}
   - {fileID: 8300000, guid: 41dd054c4c85bc843b58b0ce9956a927, type: 3}
   - {fileID: 8300000, guid: 7a5992485d541004f962c7909094d462, type: 3}
+  percentToPlaySound: 4
+  interval: 0
 --- !u!82 &3463843356686430212
 AudioSource:
   m_ObjectHideFlags: 0

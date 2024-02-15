@@ -8,6 +8,7 @@ public class EnemyHitHandler : HitHandler
 {
     public bool instaKillActive;
     private HitType lastHit;
+    private EnemyAudioManager audioManager;
 
     [Header("Events")]
     [SerializeField] protected EventSO onInstaKillStartEvent;
@@ -26,6 +27,7 @@ public class EnemyHitHandler : HitHandler
 
     private void Start()
     {
+        audioManager = GetComponent<EnemyAudioManager>();
     }
     private void OnEnable()
     {
@@ -61,6 +63,7 @@ public class EnemyHitHandler : HitHandler
     private void TakeDamage(float damageAmount, Vector2 impactPoint)
     {
         AnimatedVFXManager.Instance.PlayVFX(AnimatedVFXManager.VFXType.Blood, impactPoint, transform.rotation);
+        audioManager.PlayHurtSound();
         if (instaKillActive)
             healthSystem.TakeDamage(healthSystem.Health);
         else
