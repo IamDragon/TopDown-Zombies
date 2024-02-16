@@ -501,9 +501,7 @@ MonoBehaviour:
   pointInfo: {fileID: 11400000, guid: 8f7aacc64b256834ab32c39cd9fbb57f, type: 2}
   points: 500
   infinitePoints: 0
-  enemyNormalDeathEvent: {fileID: 11400000, guid: 8c24ca97933b4d747b8a1e541cf8ccc9, type: 2}
-  enemyHeadshotDeathEvent: {fileID: 11400000, guid: 21d57acf4107f2e43aaa2786510164e2, type: 2}
-  enemyKnifeDeathEvent: {fileID: 11400000, guid: 05fd5584803d064418d7d8dac18c5294, type: 2}
+  onEnemyDeath: {fileID: 11400000, guid: 1dfba8ea8f4527b478462caa4ca08112, type: 2}
   enemyHitEvent: {fileID: 11400000, guid: 72510b7f1cafe9e44b336d0ced65fd04, type: 2}
   onAddPoints: {fileID: 11400000, guid: 82c9fa1c66744a14a809ffd39ecfdc0e, type: 2}
   onRemovePoints: {fileID: 11400000, guid: e6227d12fc57a39428f596585bd6340a, type: 2}

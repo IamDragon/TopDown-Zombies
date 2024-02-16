@@ -13,17 +13,17 @@ public class EnemyHitHandler : HitHandler
     [Header("Events")]
     [SerializeField] protected EventSO onInstaKillStartEvent;
     [SerializeField] protected EventSO onInstaKillEndEvent;
-    [SerializeField] protected EventSO onNormalDeathEvent;
-    [SerializeField] protected EventSO onSpecialDeathEvent;
-    [SerializeField] protected EventSO onHeadshotDeathEvent;
+    [SerializeField] protected EnemyHitHandlerEventSO onDeath;
     [SerializeField] protected EventSO onHitEvent;
 
-    private enum HitType
+    public enum HitType
     {
         Normal,
-        Knife,
+        Special,
         Headshot
     }
+
+    public HitType LastHit { get { return lastHit; } }
 
     private void Start()
     {
@@ -31,14 +31,14 @@ public class EnemyHitHandler : HitHandler
     }
     private void OnEnable()
     {
-        healthSystem.OnDeath += CalculateDeathCause;
+        healthSystem.OnDeath += Die;
         onInstaKillStartEvent.Action += ActivateInstaKill;
         onInstaKillEndEvent.Action += DeactivateInstaKill;
     }
 
     private void OnDisable()
     {
-        healthSystem.OnDeath -= CalculateDeathCause;
+        healthSystem.OnDeath -= Die;
         onInstaKillStartEvent.Action -= ActivateInstaKill;
         onInstaKillEndEvent.Action -= DeactivateInstaKill;
     }
@@ -56,7 +56,7 @@ public class EnemyHitHandler : HitHandler
 
     public void GetHitMelee(float damageAmount, Vector2 impactPoint)
     {
-        lastHit = HitType.Knife;
+        lastHit = HitType.Special;
         TakeDamage(damageAmount, impactPoint);
     }
 
@@ -73,20 +73,9 @@ public class EnemyHitHandler : HitHandler
         }
     }
 
-    private void CalculateDeathCause()
+    private void Die()
     {
-        switch (lastHit)
-        {
-            case HitType.Normal:
-                onNormalDeathEvent.Invoke();
-                break;
-            case HitType.Headshot:
-                onHeadshotDeathEvent?.Invoke();
-                break;
-            case HitType.Knife:
-                onSpecialDeathEvent.Invoke();
-                break;
-        }
+        onDeath.Invoke(this);
     }
 
     private void ActivateInstaKill()

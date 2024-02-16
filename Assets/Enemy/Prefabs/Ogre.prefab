@@ -130,9 +130,7 @@ MonoBehaviour:
   instaKillActive: 0
   onInstaKillStartEvent: {fileID: 11400000, guid: 61abfbe2db09b2a4fb5c641b2ab4e208, type: 2}
   onInstaKillEndEvent: {fileID: 11400000, guid: 065f9eac5121f9147a4b7fae150c7c6e, type: 2}
-  onNormalDeathEvent: {fileID: 11400000, guid: 8c24ca97933b4d747b8a1e541cf8ccc9, type: 2}
-  onSpecialDeathEvent: {fileID: 11400000, guid: 05fd5584803d064418d7d8dac18c5294, type: 2}
-  onHeadshotDeathEvent: {fileID: 11400000, guid: 21d57acf4107f2e43aaa2786510164e2, type: 2}
+  onDeath: {fileID: 11400000, guid: 1dfba8ea8f4527b478462caa4ca08112, type: 2}
   onHitEvent: {fileID: 11400000, guid: 72510b7f1cafe9e44b336d0ced65fd04, type: 2}
 --- !u!114 &810074005658481559
 MonoBehaviour:

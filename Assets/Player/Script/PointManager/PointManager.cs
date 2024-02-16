@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using static EnemyHitHandler;
 
 public class PointManager : MonoBehaviour
 {
@@ -13,9 +15,7 @@ public class PointManager : MonoBehaviour
 
     [Header("Events")]
     //enemy related
-    [SerializeField] private EventSO enemyNormalDeathEvent;
-    [SerializeField] private EventSO enemyHeadshotDeathEvent;
-    [SerializeField] private EventSO enemyKnifeDeathEvent;
+    [SerializeField] private EnemyHitHandlerEventSO onEnemyDeath;
     [SerializeField] private EventSO enemyHitEvent;
 
     //points increa/decrease
@@ -33,9 +33,7 @@ public class PointManager : MonoBehaviour
 
     private void OnEnable()
     {
-        enemyNormalDeathEvent.Action += AddKillPoints;
-        enemyHeadshotDeathEvent.Action += AddSpecialKillPoints;
-        enemyKnifeDeathEvent.Action += AddSpecialKillPoints;
+        onEnemyDeath.Action += AddKillPoints;
         enemyHitEvent.Action += BodyShots;
 
         onDoublePointsStart.Action += ActivateDoublePoints;
@@ -49,9 +47,7 @@ public class PointManager : MonoBehaviour
 
     private void OnDisable()
     {
-        enemyNormalDeathEvent.Action -= AddKillPoints;
-        enemyHeadshotDeathEvent.Action -= AddSpecialKillPoints;
-        enemyKnifeDeathEvent.Action -= AddSpecialKillPoints;
+        onEnemyDeath.Action -= AddKillPoints;
         enemyHitEvent.Action -= BodyShots;
 
         onDoublePointsStart.Action -= ActivateDoublePoints;
@@ -103,6 +99,23 @@ public class PointManager : MonoBehaviour
     {
         AddPoints(pointInfo.headshotPoints);
     }
+
+    private void AddKillPoints(EnemyHitHandler hithandler)
+    {
+        switch (hithandler.LastHit)
+        {
+            case HitType.Normal:
+                AddPoints(pointInfo.killPoints);
+                break;
+            case HitType.Headshot:
+                AddPoints(pointInfo.headshotPoints);
+                break;
+            case HitType.Special:
+                AddPoints(pointInfo.headshotPoints);
+                break;
+        }
+    }
+
 
     public int GetPoints()
     {
