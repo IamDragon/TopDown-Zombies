@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: -437493711, guid: 37284f9bb58348a4d995b7344f293277, type: 3}
-  m_Color: {r: 0.7238203, g: 0.48989856, b: 0.9528302, a: 1}
+  m_Color: {r: 0.77254903, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 3911353241218652425}
   - component: {fileID: 2725213453103881927}
   - component: {fileID: 7537391365718441016}
+  - component: {fileID: 4943291234524442806}
+  - component: {fileID: 4929753103864774927}
   m_Layer: 0
   m_Name: Upgraded Winchester-12
   m_TagString: Untagged
@@ -137,12 +139,10 @@ MonoBehaviour:
   gunName: Winchester-12
   spriteRenderer: {fileID: 1816953179445158242}
   muzzleFlashTime: 0.1
-  ammoPreset: {fileID: 11400000, guid: 4fa3d6b31be4c674db0603b200fef079, type: 2}
-  downedAmmoPreset: {fileID: 0}
-  magAmmo: 0
-  maxMagAmmo: 0
-  stockpileAmmo: 0
-  maxStockpileAmmo: 0
+  magAmmo: 5
+  maxMagAmmo: 5
+  stockpileAmmo: 60
+  maxStockpileAmmo: 60
   damage: 30
   headShotMultiplier: 1.1
   gunType: 5
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromParent: 1
+  addedRotation: 0
 --- !u!114 &7537391365718441016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,119 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1816953179445158242}
+--- !u!82 &4943291234524442806
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911353241218652424}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4929753103864774927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911353241218652424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012fe3d96acb4364291adbecf78f67d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotClips:
+  - {fileID: 8300000, guid: 80f79e427aca166418c6b169903e6800, type: 3}
+  - {fileID: 8300000, guid: 88d3b037c1dbba047936411324480b84, type: 3}
+  relaodClips:
+  - {fileID: 8300000, guid: 446bed4d6c828a3489fea6f3f7dc86fb, type: 3}
 --- !u!1 &3911353241505443023
 GameObject:
   m_ObjectHideFlags: 0

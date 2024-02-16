@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: -2129348504, guid: 37284f9bb58348a4d995b7344f293277, type: 3}
-  m_Color: {r: 0.6718408, g: 0.46186364, b: 0.9150943, a: 1}
+  m_Color: {r: 0.77254903, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -128,13 +128,15 @@ GameObject:
   - component: {fileID: 6262959780084137697}
   - component: {fileID: -1989573564877786923}
   - component: {fileID: 7739595430758571916}
+  - component: {fileID: -4203423582390903355}
+  - component: {fileID: -2011840766688776855}
   m_Layer: 0
   m_Name: Upgraded M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6262959780084137696
 Transform:
   m_ObjectHideFlags: 0
@@ -169,13 +171,11 @@ MonoBehaviour:
   gunName: M1911
   spriteRenderer: {fileID: 8954136145932299407}
   muzzleFlashTime: 0.1
-  ammoPreset: {fileID: 11400000, guid: 4fa3d6b31be4c674db0603b200fef079, type: 2}
-  downedAmmoPreset: {fileID: 11400000, guid: 79cabac6b54f4204c81021113a4540fb, type: 2}
-  magAmmo: 0
-  maxMagAmmo: 0
-  stockpileAmmo: 0
-  maxStockpileAmmo: 0
-  damage: 80
+  magAmmo: 8
+  maxMagAmmo: 8
+  stockpileAmmo: 80
+  maxStockpileAmmo: 80
+  damage: 40
   headShotMultiplier: 1.35
   gunType: 0
   bulletVelocity: 140
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromParent: 1
+  addedRotation: 0
 --- !u!114 &7739595430758571916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +215,119 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 8954136145932299407}
+--- !u!82 &-4203423582390903355
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262959780084137702}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.574
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &-2011840766688776855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6262959780084137702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012fe3d96acb4364291adbecf78f67d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotClips:
+  - {fileID: 8300000, guid: de7a9dae5ace64545a8ca18c946fd958, type: 3}
+  - {fileID: 8300000, guid: 5354a81f07598b9468a6dcc0d66609a6, type: 3}
+  relaodClips:
+  - {fileID: 8300000, guid: be9967bdfd39954479ad54a029c8bde8, type: 3}
 --- !u!1001 &7207341823771274402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,6 +335,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1398348257}
     m_Modifications:
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_PointLightInnerAngle
+      value: 81.509415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_PointLightOuterAngle
+      value: 81.509415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 352303955
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: -55881183
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[3]
+      value: -1405475311
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[4]
+      value: -778444059
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[5]
+      value: -1188845427
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[6]
+      value: 1284604167
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[7]
+      value: -2072658863
+      objectReference: {fileID: 0}
     - target: {fileID: 5302273057809933038, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -269,7 +431,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuzzleFlash_up_small
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
 --- !u!4 &3283381909007191628 stripped
 Transform:
