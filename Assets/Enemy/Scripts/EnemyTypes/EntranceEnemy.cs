@@ -45,7 +45,7 @@ public class EntranceEnemy : AnimatedEnemy
     protected bool EntranceInRange()
     {
         Collider2D entrance = Physics2D.OverlapCircle(transform.position, distanceToEntrance, entranceMask);
-        if (entrance)
+        if (entrance && Vector3.Distance(entrance.transform.position, transform.position) <= distanceToEntrance) // check distance to center of entrance so enemies dont stop to early and enemies arent hidden behind walls
             closestEntrance = entrance.transform.parent.GetComponent<BoardedEntrance>();
         else
             closestEntrance = null;

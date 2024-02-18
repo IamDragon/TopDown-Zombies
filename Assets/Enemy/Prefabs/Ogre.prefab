@@ -79,7 +79,7 @@ MonoBehaviour:
   moveSpeed: 2
   target: {fileID: 0}
   damageInfo: {fileID: 11400000, guid: d4a64f04c35bec54c8a563281c663ac5, type: 2}
-  distanceToEntrance: 2
+  distanceToEntrance: 1
   entranceMask:
     serializedVersion: 2
     m_Bits: 256
