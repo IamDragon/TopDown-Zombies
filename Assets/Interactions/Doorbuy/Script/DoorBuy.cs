@@ -7,10 +7,19 @@ public class DoorBuy : Buy
     [SerializeField] protected EventSO onMapUpdate;
     [Header("Door object")]
     [SerializeField] private GameObject door;
+    private DoorOpen doorOpen;
+
+    protected override void Start()
+    {
+        base.Start();
+        doorOpen = GetComponent<DoorOpen>();
+    }
+
+
     protected override void DoThing()
     {
         base.DoThing();
-        door.SetActive(false);
+        doorOpen.OpenDoor();
         onMapUpdate.Invoke();
     }
 

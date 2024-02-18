@@ -85,4 +85,24 @@ public class PlayerHealthSystem : HealthSystem
         onPlayerHealthUpdate.Invoke(Health, currentMaxHealth);
         return died;
     }
+
+    /// <summary>
+    /// Adds healingStart to delayBeforeHealingStarts
+    /// </summary>
+    /// <param name="healingStart"></param>
+    public void IncreaseHealingDelay(float healingStart)
+    {
+        delayBeforeHealingStarts += healingStart;
+    }
+
+    /// <summary>
+    /// Adds healingInterval to delayBetweenHealthGain
+    /// </summary>
+    /// <param name="healingInterval"></param>
+    public void IncreaseHealingInterval(float healingInterval)
+    {
+        delayBetweenHealthGain += healingInterval;
+
+    }
+
 }
