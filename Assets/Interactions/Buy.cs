@@ -55,10 +55,6 @@ public class Buy : MonoBehaviour
             DoThing();
             Player.Instance.PointManager.RemovePoints(cost);
         }
-        else
-        {
-
-        }
 
     }
     /// <summary>
@@ -82,8 +78,6 @@ public class Buy : MonoBehaviour
             && !Player.Instance.PlayerVariables.isDowned)
         {
             onInteractionTriggerdEvent.Action += BuyThing;
-            //interaction.ShowText();
-            //interaction.TextIsViSable = true;
         }
     }
 
@@ -93,8 +87,6 @@ public class Buy : MonoBehaviour
             && !Player.Instance.PlayerVariables.isDowned)
         {
             onInteractionTriggerdEvent.Action -= BuyThing;
-            //interaction.ShowText();
-            //interaction.TextIsViSable = true;
         }
     }
 

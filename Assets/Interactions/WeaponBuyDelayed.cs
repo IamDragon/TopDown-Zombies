@@ -9,6 +9,19 @@ public class WeaponBuyDelayed : WeaponBuy
     [SerializeField] private float processDelay;
     [SerializeField] private float removalDelay;
 
+    protected override void BuyThing()
+    {
+        if (Player.Instance.PlayerVariables.isDowned)
+            return;
+        //check if we have enough points && arent already working
+        //if we do remove points and do the thing
+        if (CanBuy() && !working)
+        {
+            DoThing();
+            Player.Instance.PointManager.RemovePoints(cost);
+        }
+    }
+
     protected override void DoThing()
     {
         if (working)
