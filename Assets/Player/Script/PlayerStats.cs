@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EnemyHitHandler;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private PlayerStatsEventSO updateScoreboardEvent;
-    [SerializeField] private EventSO enemyNormalDeathEvent;
-    [SerializeField] private EventSO enemyHeadshotDeathEvent;
+    [SerializeField] private EnemyHitHandlerEventSO OnEnemyDeath;
     [SerializeField] private EventSO onUpdatedowns;
     [SerializeField] private IntEventSO onPointIncrease;
 
@@ -23,32 +23,18 @@ public class PlayerStats : MonoBehaviour
 
     private void OnEnable()
     {
-        enemyNormalDeathEvent.Action += IncreaseKillCount;
-        enemyHeadshotDeathEvent.Action += IncreaseKillCount;
-        enemyHeadshotDeathEvent.Action += IncreaseHeadshotCount;
+        OnEnemyDeath.Action += CalculateKill;
         onUpdatedowns.Action += IncreaseDownCount;
         onPointIncrease.Action += IncreasPointCount;
 
-        //EnemyActions.OnNormalDeath += IncreaseKillCount;
-        //EnemyActions.OnHeadshotDeath += IncreaseKillCount;
-        //EnemyActions.OnHeadshotDeath += IncreaseHeadshotCount;
-        //PlayerActions.PlayerDowned += IncreaseDownCount;
-        //PointManager.OnAddPoints += IncreasPointCount;
     }
 
     private void OnDisable()
     {
-        enemyNormalDeathEvent.Action -= IncreaseKillCount;
-        enemyHeadshotDeathEvent.Action -= IncreaseKillCount;
-        enemyHeadshotDeathEvent.Action -= IncreaseHeadshotCount;
+        OnEnemyDeath.Action -= CalculateKill;
         onUpdatedowns.Action -= IncreaseDownCount;
         onPointIncrease.Action -= IncreasPointCount;
 
-        //EnemyActions.OnNormalDeath -= IncreaseKillCount;
-        //EnemyActions.OnHeadshotDeath -= IncreaseKillCount;
-        //EnemyActions.OnHeadshotDeath -= IncreaseHeadshotCount;
-        //PlayerActions.PlayerDowned -= IncreaseDownCount;
-        //PointManager.OnAddPoints -= IncreasPointCount;
     }
 
     private void IncreaseKillCount()
@@ -67,6 +53,20 @@ public class PlayerStats : MonoBehaviour
     {
         downs++;
         updateScoreboardEvent.Invoke(this);
+    }
+
+    private void CalculateKill(EnemyHitHandler hitHandler)
+    {
+        switch (hitHandler.LastHit)
+        {
+            case HitType.Normal:
+                IncreaseKillCount();
+                IncreaseHeadshotCount();
+                break;
+            case HitType.Headshot:
+                IncreaseHeadshotCount();
+                break;
+        }
     }
 
     private void IncreasPointCount(int amount)

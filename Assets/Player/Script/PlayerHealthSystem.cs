@@ -31,10 +31,13 @@ public class PlayerHealthSystem : HealthSystem
     protected override void Death()
     {
         base.Death();
-        if (downCount >= downsBeforeDeath || !QuickReviveActive)
-            TrueDeath();
-        else
-            EnterDownState();
+        TrueDeath();
+
+        //include if want player to be downed - don't have assets for this so wont be included
+        //if (downCount >= downsBeforeDeath || !QuickReviveActive)
+        //    TrueDeath();
+        //else
+        //    EnterDownState();
     }
 
     private void TrueDeath()
