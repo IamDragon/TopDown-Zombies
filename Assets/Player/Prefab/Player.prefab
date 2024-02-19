@@ -469,7 +469,7 @@ MonoBehaviour:
   grenades: 3
   maxGrenades: 3
   spawnPoint: {fileID: 4375854117742501872}
-  onGrenadeFillEvent: {fileID: 11400000, guid: 34392ca44a66cd54c86f137fbf76c581, type: 2}
+  onGrenadeFillEvent: {fileID: 11400000, guid: db5c712ec74d5c447bfed26b0ca145b6, type: 2}
   onGrenadeInecreaseEvent: {fileID: 11400000, guid: b969a33e384026647979461c42108e93, type: 2}
   onGrenadeDecreaseEvent: {fileID: 11400000, guid: f1eb2ecd5f7624746bfac9f0db4ef2d8, type: 2}
   onMaxAmmo: {fileID: 11400000, guid: 26395a7bbf9f5534385cf957173e584b, type: 2}
@@ -563,8 +563,8 @@ MonoBehaviour:
   downsBeforeDeath: 4
   downCount: 0
   healthGainPerInterval: 10
-  delayBeforeHealingStarts: 2
-  delayBetweenHealthGain: 0.5
+  delayBeforeHealingStarts: 5
+  delayBetweenHealthGain: 0.75
   onPlayerTrueDeath: {fileID: 11400000, guid: c595b88ee8e9c3c45a8cd25213ac15cd, type: 2}
   onPlayerHealthUpdate: {fileID: 11400000, guid: cecefaac68d6cd547a6ab7b03b0a6d1a, type: 2}
 --- !u!114 &4375854118412526387
@@ -600,8 +600,7 @@ MonoBehaviour:
   headshots: 0
   downs: 0
   updateScoreboardEvent: {fileID: 11400000, guid: cdf57711da8ddfb45914aa470b07fa65, type: 2}
-  enemyNormalDeathEvent: {fileID: 11400000, guid: 8c24ca97933b4d747b8a1e541cf8ccc9, type: 2}
-  enemyHeadshotDeathEvent: {fileID: 11400000, guid: 21d57acf4107f2e43aaa2786510164e2, type: 2}
+  OnEnemyDeath: {fileID: 11400000, guid: 1dfba8ea8f4527b478462caa4ca08112, type: 2}
   onUpdatedowns: {fileID: 11400000, guid: c8936ded5004c3c4888a678fdf33ae34, type: 2}
   onPointIncrease: {fileID: 11400000, guid: 82c9fa1c66744a14a809ffd39ecfdc0e, type: 2}
 --- !u!114 &4375854118412526389

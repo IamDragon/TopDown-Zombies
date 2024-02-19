@@ -29,7 +29,10 @@ public class Explosion : MonoBehaviour
         //randomize rotation?
         //
         AnimatedVFXManager.Instance.PlayVFX(explosionType, transform.position, transform.rotation);
-        PositionalAudioManager.Instance.PlayAudio(transform.position, explosionSounds[Random.Range(0, explosionSounds.Length - 1)]);
+        if (explosionSounds.Length == 0)
+            Debug.LogWarning("Missing sound for explosion");
+        else
+            PositionalAudioManager.Instance.PlayAudio(transform.position, explosionSounds[Random.Range(0, explosionSounds.Length - 1)]);
 
         Destroy(gameObject);
     }

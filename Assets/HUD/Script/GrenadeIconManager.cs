@@ -6,7 +6,7 @@ public class GrenadeIconManager : IconManager
 {
 
     [Header("Events")]
-    [SerializeField] private EventSO onGrenadeFillEvent;
+    [SerializeField] private SpriteEventSO onGrenadeFillEvent;
     [SerializeField] private SpriteEventSO onGrenadeInecreaseEvent;
     [SerializeField] private EventSO onGrenadeDecreaseEvent;
 
@@ -18,14 +18,14 @@ public class GrenadeIconManager : IconManager
     */
     private void OnEnable()
     {
-        onGrenadeFillEvent.Action += ShowIcons;
+        onGrenadeFillEvent.Action += SetAndShowIcons;
         onGrenadeInecreaseEvent.Action += ShowIcon;
         onGrenadeDecreaseEvent.Action += HideLastIcon;
     }
 
     private void OnDisable()
     {
-        onGrenadeFillEvent.Action -= ShowIcons;
+        onGrenadeFillEvent.Action -= SetAndShowIcons;
         onGrenadeInecreaseEvent.Action -= ShowIcon;
         onGrenadeDecreaseEvent.Action -= HideLastIcon;
     }

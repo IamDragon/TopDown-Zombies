@@ -12,7 +12,7 @@ public class GrenadeHandler : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
 
     [Header("Events")]
-    [SerializeField] private EventSO onGrenadeFillEvent;
+    [SerializeField] private SpriteEventSO onGrenadeFillEvent;
     [SerializeField] private SpriteEventSO onGrenadeInecreaseEvent;
     [SerializeField] private EventSO onGrenadeDecreaseEvent;
     [SerializeField] private EventSO onMaxAmmo;
@@ -55,7 +55,7 @@ public class GrenadeHandler : MonoBehaviour
     private void FillGrenades()
     {
         grenades = maxGrenades;
-        onGrenadeFillEvent.Invoke();
+        onGrenadeFillEvent.Invoke(Grenade.Sprite);
     }
 
     public void RecieveNewGrenadeType(Projectile grenade)

@@ -264,6 +264,8 @@ MonoBehaviour:
   explosionRadius: 5
   damage: 50
   explosionType: 2
+  explosionSounds:
+  - {fileID: 8300000, guid: 04842d7f6db125f48868862e7f30c4e4, type: 3}
 --- !u!50 &8496318642307100754
 Rigidbody2D:
   serializedVersion: 4

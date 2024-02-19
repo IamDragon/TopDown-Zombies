@@ -23,11 +23,25 @@ public class IconManager : MonoBehaviour
             SetAndShowIcon(icon);
     }
 
+    protected void SetIcons(Sprite icon)
+    {
+        foreach (Image image in images)
+        {
+            image.sprite = icon; 
+        }
+    }
+
     protected void SetAndShowIcon(Sprite icon)
     {
         images[lastIndex].sprite = icon;
         images[lastIndex].transform.gameObject.SetActive(true);
         lastIndex++;
+    }
+
+    protected void SetAndShowIcons(Sprite icon)
+    {
+        SetIcons(icon);
+        ShowIcons();
     }
 
     protected void CreateIcon(Sprite icon)

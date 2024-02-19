@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf6c3ed37e00d434a866805a99020841, type: 3}
-  m_Name: OnGrenadeFIll
+  m_Script: {fileID: 11500000, guid: 3323cb2ade7bf864e936138c77e809c7, type: 3}
+  m_Name: OnGrenadeFill
   m_EditorClassIdentifier: 
-  description: Triggers when renades are filled (max ammo)
+  description: Triggers when grenades are filled (max ammo, get new grenade type)
