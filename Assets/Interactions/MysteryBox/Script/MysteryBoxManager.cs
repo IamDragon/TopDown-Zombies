@@ -10,6 +10,7 @@ public class MysteryBoxManager : MonoBehaviour
     [Header("Logistsics")]
     [SerializeField] Transform[] boxLocations;
     [SerializeField] MysteryBox boxPrefab;
+    [SerializeField] float timeBeforeMove;
 
     [Header("Events")]
     [SerializeField] protected EventSO onFireSaleStartEvent;
@@ -60,10 +61,10 @@ public class MysteryBoxManager : MonoBehaviour
 
     private void RelocateBox()
     {
-        int nextLocatio = FindNextBoxLocationIndex();
+        int nextLocation = FindNextBoxLocationIndex();
         mysterBoxes[boxLocationIndex].DeactivateBox();
-        mysterBoxes[nextLocatio].ActivateBox();
-        boxLocationIndex = nextLocatio;
+        mysterBoxes[nextLocation].ActivateBox();
+        boxLocationIndex = nextLocation;
         rolls = 0;
     }
 
@@ -77,7 +78,7 @@ public class MysteryBoxManager : MonoBehaviour
             if(nextLocation != boxLocationIndex)
             {
                 foundLocation = true;
-                //Debug.Log("Next box location: Index " + nextLocation + ", Name" + boxLocations[nextLocation].name);
+                Debug.Log("Next box location: Index " + nextLocation + ", Name" + boxLocations[nextLocation].name);
             }
         }
          
@@ -88,7 +89,6 @@ public class MysteryBoxManager : MonoBehaviour
     {
         if (fireSaleActive)
             return false;
-
         rolls++;
         bool shouldChangeLocation = false;
         //if(rolls <= 3)
@@ -98,7 +98,7 @@ public class MysteryBoxManager : MonoBehaviour
         if (rolls >= 4 && rolls <= 7)
         {
             //15% for bear
-            shouldChangeLocation = ShouldChangeLocation(15);
+            shouldChangeLocation = ShouldChangeLocation(0);
         }
         else if (rolls >= 8 && rolls <= 12)
         {
@@ -112,7 +112,7 @@ public class MysteryBoxManager : MonoBehaviour
         }
         if (shouldChangeLocation)
         {
-            RelocateBox();
+            Invoke(nameof(RelocateBox), timeBeforeMove);
             return true;
         }
         return false;

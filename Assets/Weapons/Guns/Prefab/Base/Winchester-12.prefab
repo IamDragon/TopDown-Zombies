@@ -340,6 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7175766357544998810}
   - component: {fileID: 6939017954486071887}
+  - component: {fileID: 4493212156789945091}
   m_Layer: 0
   m_Name: Fire Effect and Bullet 16x16_317
   m_TagString: Untagged
@@ -414,3 +415,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4493212156789945091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981307939564610068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655b0b6a849b8c042b486b49a3329906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlashes:
+  - {fileID: 1927139294, guid: 49e5474887ff878488f1562deb8ba254, type: 3}
+  - {fileID: 1035022568, guid: 49e5474887ff878488f1562deb8ba254, type: 3}
+  - {fileID: -785516502, guid: 49e5474887ff878488f1562deb8ba254, type: 3}
+  angle: 0

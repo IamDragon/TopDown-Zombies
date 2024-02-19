@@ -18,9 +18,14 @@ public class ShowRandomWeaponAnimation : MonoBehaviour
     private MysteryBox mysteryBox;
     private SpriteRenderer spriterenderer;
 
-    void Start()
+    private void Awake()
     {
         spriterenderer = GetComponent<SpriteRenderer>();
+
+    }
+
+    void Start()
+    {
         spriterenderer.enabled = false;
         //durationDecrease = (initialDuration - 0.01f) / spriteChanges;
     }
@@ -56,7 +61,6 @@ public class ShowRandomWeaponAnimation : MonoBehaviour
         //set image then wait -> repeat until finished
         while (running)
         {
-            Debug.Log("Sprite change");
             spriterenderer.sprite = GetRandomWeaponImage();
 
             float duration = (spriteChangesPerformed * durationIncrease) - initialDuration;

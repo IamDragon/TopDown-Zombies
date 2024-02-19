@@ -391,7 +391,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuzzleFlash_up_small
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3598122011509892153, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 93185db8a2211f44a8ee14e12041f624, type: 3}
 --- !u!4 &2599761389820762323 stripped
 Transform:

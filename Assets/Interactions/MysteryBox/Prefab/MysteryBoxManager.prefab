@@ -82,5 +82,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   boxPrefab: {fileID: 1321837345173748834, guid: fa23dc21cb1be1e4b841729fda3662c7, type: 3}
+  timeBeforeMove: 5.3
   onFireSaleStartEvent: {fileID: 11400000, guid: af6aebbcdfe21574abe392c7b9b54336, type: 2}
   onFireSaleEndEvent: {fileID: 11400000, guid: f23099d3ce1948d41bcb9be56a0183cd, type: 2}

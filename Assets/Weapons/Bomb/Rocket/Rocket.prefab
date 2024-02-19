@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9061946877098632908}
   - component: {fileID: 5141412320254651906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon_5_100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167687860470926555}
   - component: {fileID: 6885749209297153044}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 1656574800588535795}
   - component: {fileID: 8496318642307100754}
   - component: {fileID: 2320450734927810567}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
