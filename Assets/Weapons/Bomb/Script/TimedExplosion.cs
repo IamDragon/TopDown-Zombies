@@ -16,6 +16,6 @@ public class TimedExplosion : Explosion
     {
         yield return new WaitForSeconds(fuseTime);
         Explode();
-        Destroy(gameObject);
     }
+
 }

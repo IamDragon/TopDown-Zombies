@@ -11,15 +11,15 @@ public class MonkeyBomb : TimedExplosion
 
     protected override void Start()
     {
-        base.Start();
-        onMonkeyBombStartEvent.Invoke(this.transform);
         Debug.Log("Monkey bomb start triggered");
+        onMonkeyBombStartEvent.Invoke(this.transform);
+        base.Start();
     }
 
     public override void Explode()
     {
+        Debug.Log("Monkey bomb end triggered");
         onMonkeyBombEndEvent.Invoke(this.transform);
         base.Explode();
-        Debug.Log("Monkey bomb end triggered");
     }
 }

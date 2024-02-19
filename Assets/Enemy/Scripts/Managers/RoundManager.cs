@@ -106,7 +106,7 @@ public class RoundManager : MonoBehaviour
     private int CalculateEnemiesThisRound()
     {
         //formula for 1 player
-        int enemiesThisRound = Mathf.RoundToInt(0.000058f * Mathf.Pow(currentRound, 3f) + 0.074032f * Mathf.Pow(currentRound, 2) + 0.718119f * currentRound + 14.738699f);
+        int enemiesThisRound = Mathf.RoundToInt(0.000058f * Mathf.Pow(currentRound, 3f) + 0.074032f * Mathf.Pow(currentRound, 2) + 0.718119f * currentRound + 14.738699f / 2);
         //Debug.Log("Zombies on round "+currentRound+": " + enemiesThisRound);
         return enemiesThisRound;
     }

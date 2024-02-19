@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2859048713554764698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 0.07, z: -10.772747}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6129715364281459789}
@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 8860795831926325123}
   - component: {fileID: 1715522000162794181}
   - component: {fileID: 4960439172219481307}
-  - component: {fileID: -5450734155836062364}
   - component: {fileID: -5377651433735548569}
   m_Layer: 10
   m_Name: MonkeyBomb
@@ -114,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6469497482141107347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.51252997, y: -1.7806896, z: 10.772747}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -138,11 +137,12 @@ MonoBehaviour:
   damageInfo: {fileID: 11400000, guid: 2a99d5ccef37f6647b12129de0e733d3, type: 2}
   explosionRadius: 5
   damage: 100
-  explosionType: 0
-  explosionSounds: []
+  explosionType: 1
+  explosionSounds:
+  - {fileID: 8300000, guid: 04842d7f6db125f48868862e7f30c4e4, type: 3}
   fuseTime: 5
-  onMonkeyBombStartEvent: {fileID: 0}
-  onMonkeyBombEndEvent: {fileID: 0}
+  onMonkeyBombStartEvent: {fileID: 11400000, guid: c779df1c971329641ba77fc84b567d13, type: 2}
+  onMonkeyBombEndEvent: {fileID: 11400000, guid: c9f437375e6208f4ba7b2999aa0858c5, type: 2}
 --- !u!50 &8860795831926325123
 Rigidbody2D:
   serializedVersion: 4
@@ -190,27 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   headShotMultiplier: 1
-  range: 10
+  range: -1
   damageInfo: {fileID: 11400000, guid: 2a99d5ccef37f6647b12129de0e733d3, type: 2}
---- !u!114 &-5450734155836062364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6469497482141107347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 104398f9b7178ee42872f32791b1c713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageInfo: {fileID: 11400000, guid: 2a99d5ccef37f6647b12129de0e733d3, type: 2}
-  explosionRadius: 5
-  damage: 50
-  explosionType: 1
-  explosionSounds:
-  - {fileID: 8300000, guid: 04842d7f6db125f48868862e7f30c4e4, type: 3}
-  fuseTime: 3
 --- !u!114 &-5377651433735548569
 MonoBehaviour:
   m_ObjectHideFlags: 0

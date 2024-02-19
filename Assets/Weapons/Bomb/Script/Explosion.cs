@@ -30,6 +30,8 @@ public class Explosion : MonoBehaviour
         //
         AnimatedVFXManager.Instance.PlayVFX(explosionType, transform.position, transform.rotation);
         PositionalAudioManager.Instance.PlayAudio(transform.position, explosionSounds[Random.Range(0, explosionSounds.Length - 1)]);
+
+        Destroy(gameObject);
     }
 
 

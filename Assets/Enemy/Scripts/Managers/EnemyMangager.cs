@@ -20,8 +20,8 @@ public class EnemyMangager : MonoBehaviour
 
     private Pathfinding pathfinder;
 
-    private List<Transform> targets;
-    private Transform currentTarget;
+    public List<Transform> targets;
+    public Transform currentTarget;
     bool playerAlive;
 
     [Header("Events")]
@@ -53,6 +53,7 @@ public class EnemyMangager : MonoBehaviour
         enemies = new Enemy[totalAMountToPool];
         targets = new List<Transform>();
         currentTarget = player;
+        playerAlive = true;
         CreateEnemies();
     }
 
@@ -164,8 +165,11 @@ public class EnemyMangager : MonoBehaviour
             currentTarget = target;
             SetEnemiesTarget();
         }
-
-        targets.Add(target);
+        int index = FindEmptySpotInTargets();
+        if (index == -1)
+            targets.Add(target);
+        else
+            targets[index] = target;
     }
 
     private void RemoveMonkeyTarget(Transform target)
@@ -176,22 +180,60 @@ public class EnemyMangager : MonoBehaviour
 
     private void FindNextTarget()
     {
-        if (targets.Count == 0 && playerAlive)
+        bool targetsEmpty = IsTargetsEmpty();
+        if (targetsEmpty && playerAlive)
         {
+            Debug.Log("Setting target to player");
             currentTarget = player;
             SetEnemiesTarget();
         }
-        else if(targets.Count == 0 && !playerAlive)
+        else if (targetsEmpty && !playerAlive)
         {
+            Debug.Log("Setting target to null");
             currentTarget = null;
             SetEnemiesTarget();
         }
         else
         {
-            currentTarget = targets[0];
+            int index = FindValidTarget();
+            currentTarget = targets[index];
+            Debug.Log("Setting target to targets");
+            if (index == -1)
+                currentTarget = player;
             SetEnemiesTarget();
         }
     }
+
+    private bool IsTargetsEmpty()
+    {
+        foreach (Transform target in targets)
+        {
+            if (target != null)
+                return false;
+        }
+        return true;
+    }
+
+    private int FindEmptySpotInTargets()
+    {
+        for (int i = 0; i < targets.Count; i++)
+        {
+            if (targets[i] == null)
+                return i;
+        }
+        return -1;
+    }
+
+    private int FindValidTarget()
+    {
+        for (int i = 0; i < targets.Count; i++)
+        {
+            if (targets[i] != null)
+                return i;
+        }
+        return -1;
+    }
+
 
     /// <summary>
     /// Sets enemies target to currentTarget

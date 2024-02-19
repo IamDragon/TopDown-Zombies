@@ -1,14 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
-using UnityEditor.PackageManager;
-using UnityEditor;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.ParticleSystem;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
-using UnityEngine.UIElements;
 public class MysteryBoxManager : MonoBehaviour
 {
     [Header("Costs")]
