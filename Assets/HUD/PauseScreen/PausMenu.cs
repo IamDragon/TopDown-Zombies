@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PausMenu : MonoBehaviour
 {
+    [Header("Quit")]
+    [SerializeField] private int mainMenuScene;
+    [Header("Pause")]
     [SerializeField] private Transform pausMenuTransfrom;
-    private bool pauseMenuOpen;
+    [Header("Event")]
     [SerializeField] private EventSO gamePausedEvent;
     [SerializeField] private EventSO gameResumedEvent;
     [SerializeField] private EventSO gameQuitEvent;
@@ -37,7 +41,7 @@ public class PausMenu : MonoBehaviour
 
     public void QuitToMainMenu()
     {
-        Debug.Log("Quit to main menu - not yet implemented");
-        //Application.Quit();
+        Debug.Log("Quit to main menu");
+        SceneManager.LoadScene(mainMenuScene);
     }
 }

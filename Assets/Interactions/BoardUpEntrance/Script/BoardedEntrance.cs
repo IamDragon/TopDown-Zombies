@@ -117,7 +117,6 @@ public class BoardedEntrance : MonoBehaviour
         {
             currentBoards = 0;
         }
-        else
         breaking = false;
         interaction.TextVisible = true;
         if (interaction.PlayerInRange)

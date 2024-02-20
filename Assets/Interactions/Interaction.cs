@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]

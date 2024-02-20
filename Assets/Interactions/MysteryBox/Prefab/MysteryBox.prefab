@@ -369,7 +369,7 @@ MonoBehaviour:
   finished: 0
   processDelay: 5
   removalDelay: 8
-  mysteryBoxWeapons: {fileID: 11400000, guid: 4d963f290dbd24d469ed94146d6998da, type: 2}
+  mysteryBoxWeapons: {fileID: 11400000, guid: d2f0c9ebd26af3c4b85672c78a151e82, type: 2}
   boxMoveSprite: {fileID: 240496320, guid: e620d8f5743d04049823e355b942c8b6, type: 3}
   boxJingle: {fileID: 8300000, guid: 7362af3ba90707642954c760e7b1dea5, type: 3}
   boxMoveAudio: {fileID: 8300000, guid: a00805c9ce0a8074987843730335ae0b, type: 3}
