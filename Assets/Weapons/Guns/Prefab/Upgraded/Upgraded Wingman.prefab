@@ -143,7 +143,7 @@ MonoBehaviour:
   maxMagAmmo: 7
   stockpileAmmo: 70
   maxStockpileAmmo: 70
-  damage: 300
+  damage: 200
   headShotMultiplier: 1.15
   gunType: 0
   bulletVelocity: 140

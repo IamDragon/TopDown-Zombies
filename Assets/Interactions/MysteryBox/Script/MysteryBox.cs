@@ -130,5 +130,6 @@ public class MysteryBox : WeaponBuyDelayed
         boxGun = null;
         Debug.Log("removing gun");
         animator.Play("Chest_empty_close");
+        weaponAnimation.Hide();
     }
 }

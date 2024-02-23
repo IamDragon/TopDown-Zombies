@@ -97,7 +97,7 @@ MonoBehaviour:
   bulletVelocity: 140
   range: 30
   triggerFire: 0
-  fireRate: 24
+  fireRate: 17
   reloadTime: 3
   firePoint: {fileID: 6913269970118773541}
   stoppingLayer:

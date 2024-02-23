@@ -24,7 +24,7 @@ public class PerkBuy : Buy
                 Player.Instance.PointManager.RemovePoints(cost);
                 onInteractionExitEvent.Invoke();
             }
-            else
+            else if(!Player.Instance.PointManager.CanAfford(cost) && !Player.Instance.PerkHandler.CanPurchasePerk(perk))
                 onCantAffordEvent.Invoke();
         }
     }

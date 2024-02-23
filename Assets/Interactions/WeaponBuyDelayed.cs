@@ -20,6 +20,10 @@ public class WeaponBuyDelayed : WeaponBuy
             DoThing();
             Player.Instance.PointManager.RemovePoints(cost);
         }
+        else if( finished )
+        {
+            DoThing();
+        }
     }
 
     protected override void DoThing()

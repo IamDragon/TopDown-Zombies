@@ -21,6 +21,8 @@ public class DoorBuy : Buy
         base.DoThing();
         doorOpen.OpenDoor();
         onMapUpdate.Invoke();
+        interaction.TextVisible = false;
+        interaction.HideText();
     }
 
     protected override void SetInteractionText()

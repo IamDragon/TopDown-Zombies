@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b305a89ff38d3148944840cfe7f9d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onReloadEvent: {fileID: 0}
-  onMaxAmmoEvent: {fileID: 0}
+  onReloadEvent: {fileID: 11400000, guid: d13bfab1dbe21fd4b81225bd9aab5783, type: 2}
+  onMaxAmmoEvent: {fileID: 11400000, guid: 26395a7bbf9f5534385cf957173e584b, type: 2}
   gunName: Kar 98
   spriteRenderer: {fileID: 5256629453949778165}
   muzzleFlashTime: 0.1
